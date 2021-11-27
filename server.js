@@ -1,6 +1,8 @@
 // load .env data into process.env
 require("dotenv").config();
 
+
+
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
@@ -8,6 +10,9 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const dbConnection = require('./db/connection');
+
+const twilio = require('twilio'); //Twilio sms api
+const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 
 // connection imports
@@ -36,7 +41,9 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const homeRoutes = require("./routes/home");
-const widgetsRoutes = require("./routes/widgets");
+// const widgetsRoutes = require("./routes/widgets");
+
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
