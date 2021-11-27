@@ -12,7 +12,7 @@ const morgan = require("morgan");
 const dbConnection = require('./db/connection');
 
 const twilio = require('twilio'); //Twilio sms api
-const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 
 // connection imports
@@ -49,7 +49,7 @@ const homeRoutes = require("./routes/home");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes);
 app.use('/home', homeRoutes)
-/* app.use("/api/widgets", widgetsRoutes(db)); */
+// app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -58,7 +58,18 @@ app.use('/home', homeRoutes)
 
 app.get("/", (req, res) => {
   res.render("index");
+  // console.log("TEST ROUTE");
+  // res.json({ id: "Rohit"});
 });
+
+// client.messages
+//   .create({
+//     body: 'Hello from Node',
+//     to: process.env.TWILIO_TEST_PHONE_NUMBER, // Text this number
+//     from: process.env.TWILIO_PHONE_NUMBER, // From a valid Twilio number
+//   })
+//   .then((message) => console.log(message.sid))
+//   .catch(err => console.log(err));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
