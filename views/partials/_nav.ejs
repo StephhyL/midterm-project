@@ -1,13 +1,24 @@
 <nav>
   <div class="title">
-    <span>tweeter</span>
+    <span>Restaurant</span>
   </div>
   <div class="right-side-items">
     <div class="right-side-text">
-      <span><b>Write</b> a new tweet</span>
+    <% if(!user){ %>
+      <button method='GET' action='/login/:id'><a href="/login/1">Login1</a></button>
+      <button method='GET' action='/login/:id'><a href="/login/2">Login2</a></button>
+    <%} else if(user.id === 1) { %>
+      <button method='GET' action='/'><a href="/">Logout</a></button>
+      <button method='GET' action='/register'>Orders</button>
+    <% } else { %>
+      <button method='GET' action='/'><a href="/">Logout</a></button>
+      <button method='GET' action='/register'>My Cart</button>
+    <% } %>
     </div>
     <div class="double-down-arrow">
       <i class="fa-solid fa-angles-down" ></i>
     </div>
   </div>
 </nav>
+
+

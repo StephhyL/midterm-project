@@ -12,5 +12,18 @@ const getUsers = () => {
     });
 };
 
+const getUserById = (id) => {
+  const values = [id]
+  return connection.query(`SELECT * FROM users WHERE id = $1;`, values)
+    .then(data => {
+      return data.rows[0];
 
-module.exports = { getUsers }
+    })
+    .catch(err => {
+      console.error(err.message);
+      return err.message;
+    });
+};
+
+
+module.exports = { getUsers, getUserById }
