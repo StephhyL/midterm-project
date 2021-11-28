@@ -6,7 +6,8 @@ router.get("/", (req, res) => {
   homeFns.getHome()//r return either rows or error
     .then((food_items) => {
       // res.json({ food_items });
-      res.render('index', { food_items });
+      const user = 1;
+      res.render('index', { food_items, user });
     })
 });
 

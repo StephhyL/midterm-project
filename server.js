@@ -42,6 +42,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const homeRoutes = require("./routes/home");
 
+const userLoginRoutes = require('./routes/login');
 // const widgetsRoutes = require("./routes/widgets");
 
 
@@ -50,6 +51,7 @@ const homeRoutes = require("./routes/home");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes);
 app.use('/', homeRoutes)
+app.use('/login', userLoginRoutes)
 // app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
@@ -63,6 +65,14 @@ app.use('/', homeRoutes)
 //   // res.json({ id: "Rohit"});
 // });
 
+// I commented this code
+
+// app.get("/", (req, res) => {
+//   const user = null;
+//   res.render("index", { user });
+//   // console.log("TEST ROUTE");
+//   // res.json({ id: "Rohit"});
+// });
 
 // client.messages
 //   .create({

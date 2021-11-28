@@ -1,10 +1,19 @@
 <!-- <nav>
   <div class="title">
-    <span>tweeter</span>
+    <span>Restaurant</span>
   </div>
   <div class="right-side-items">
     <div class="right-side-text">
-      <span><b>Write</b> a new tweet</span>
+    <% if(!user){ %>
+      <button method='GET' action='/login/:id'><a href="/login/1">Login1</a></button>
+      <button method='GET' action='/login/:id'><a href="/login/2">Login2</a></button>
+    <%} else if(user.id === 1) { %>
+      <button method='GET' action='/'><a href="/">Logout</a></button>
+      <button method='GET' action='/register'>Orders</button>
+    <% } else { %>
+      <button method='GET' action='/'><a href="/">Logout</a></button>
+      <button method='GET' action='/register'>My Cart</button>
+    <% } %>
     </div>
     <div class="double-down-arrow">
       <i class="fa-solid fa-angles-down" ></i>
@@ -19,7 +28,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <!-- <ul class="navbar-nav"> -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
@@ -32,7 +42,24 @@
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li>
+        <!-- <li class="nav-item d-flex"> -->
       </ul>
+      <div class="d-flex">
+        <% if(!user){ %>
+          <div>
+            <button class="me-2" method='GET' action='/login/:id'><a href="/login/1">Login1</a></button>
+            <button method='GET' action='/login/:id'><a href="/login/2">Login2</a></button>
+          </div>
+        <%} else if(user.id === 1) { %>
+          <button class="me-2" method='GET' action='/'><a href="/">Logout</a></button>
+          <button method='GET' action='/register'>Orders</button>
+        <% } else { %>
+          <button class="me-2" method='GET' action='/'><a href="/">Logout</a></button>
+          <button method='GET' action='/register'>My Cart</button>
+        <% } %>
+      </div>
     </div>
   </div>
 </nav>
+
+
