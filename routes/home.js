@@ -5,7 +5,8 @@ const homeFns = require('../db/queries/home_queries')
 router.get("/", (req, res) => {
   homeFns.getHome()//r return either rows or error
     .then((food_items) => {
-      res.json({ food_items });
+      // res.json({ food_items });
+      res.render('index', { food_items });
     })
 });
 
