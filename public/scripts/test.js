@@ -1,16 +1,20 @@
-$("#checkout-btn").on("click", createNewCart(user.id))
+$(()=> {
+
+  $("#checkout-btn").on("click", createNewCart)
+
+})
 
 
-const createNewCart = (user) => {
+const createNewCart = () => {
   const newCartObj = {};
 
-  newCartObj[customer_id] = user.id // user inputted that was rendered
+  // newCartObj[customer_id] = user.id // user inputted that was rendered
 
   let cartRows = $(".cart-row")
 
   cartRows.each(function(index, element) {
 
-    let foodName = $(this).find('.cart-food-name')
+    let foodName = $(this).find('.cart-food-name').text()
 
     let quantityElement = $(this).find('.quantity').text();
     let quantity = Number(quantityElement);
@@ -19,12 +23,18 @@ const createNewCart = (user) => {
 
   })
 
-  newCartObj["total_price"] = $("#total")
+  let totalElement = $("#total").text(); //$226
+  let totalPrice = Number(totalElement.replace("$", ""))
+
+  newCartObj["total_price"] = totalPrice;
+
   newCartObj["notes"] = $("#note").val();
 
-  console.log(newCartObj);
+  console.log('newCartObj---->', newCartObj);
 
 }
+
+
 
 
 // GRAB THE DATA FROM MY CART
@@ -44,8 +54,6 @@ for every cart row, select the
  const newCartObj = {
    customer_id: user_id
    foodName:quantity
-   --pizza: 3
-   foorName: quantity
    total_price: total
    notes: notes
  }
