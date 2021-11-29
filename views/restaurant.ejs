@@ -32,22 +32,39 @@
     </header>
 
     <div id="order-title">
-      <p>ORDER DETAILS</p>
-      <p>ESTIMATED TIME <br> TO COMPLETE</p>
+      <div id="order-details-title">ORDER DETAILS</div>
+      <div id="est-time-title"><p>ESTIMATED TIME <br> TO COMPLETE</p></div>
     </div>
 
     <div class="order-list">
 
       <div class="one-order">
         <div class="order-details">
-
-
-
-          ORDER DETAILS
-
+          <div class="user-details">
+            <div>
+                <span>Customer ID: </span>
+                <p>3</p>
+            </div>
+            <div>
+                <span>Time of Order Placement:</span>
+                <p>TIMESTAMP</p>
+            </div>
+          </div>
+          <div class="food-details">
+            <span>Food to Prepare:</span>
+            <ul>
+              <li>1 x Pizza</li>
+              <li>1 x Coffee</li>
+              <li>3 x Hamburgers</li>
+            </ul>
+          </div>
+          <div class="note-details">
+            <span>Customer Notes:</span>
+            <p>Please do not include peanuts in my hamburgers. Thank you!</p>
+          </div>
         </div>
         <div class="time-container">
-          <input type="text" id="estimatedTime" name="estimatedTime"></input>
+          <input type="text" id="estimated-time" name="estimated-time"></input>
           <button type="submit">Submit</button>
         </div>
       </div>
