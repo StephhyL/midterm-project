@@ -10,8 +10,11 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+  <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+
 </head>
 
 <body>
@@ -29,12 +32,54 @@
               <h4 class="card-title"><%= food_item.name %></h4>
               <p class="card-text"><%= food_item.description %></p>
               <h4 class="card-text text-end font-italic">$<%= food_item.price_in_cents_after_tax / 100 %></h4>
+              <div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     <% } %>
   </main>
+
+  <aside class="cart">
+    <h2>My Cart</h2>
+
+    <!--CART LIST ROWS-->
+    <div id="cartList">
+    </div>
+
+    <!--SUBTOTAL, TAX, TOTAL-->
+    <div class="math">
+
+      <div>
+        <span>Subtotal:</span>
+        <span id="subtotal">$0</span>
+      </div>
+
+      <div>
+        <span>Tax (HST 13%): </span>
+        <span id="tax">$0</span>
+      </div>
+
+      <div>
+        <span>Total: </span>
+        <span id="total">$0</span>
+      </div>
+
+    </div>
+
+      <div>
+        <form method="POST" action="/resturant">
+          <button id="checkout-btn">Checkout</button>
+        </form>
+      </div>
+
+  </aside>
+
+
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
