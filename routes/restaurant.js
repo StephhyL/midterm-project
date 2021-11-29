@@ -21,14 +21,18 @@ router.get("/", (req, res) => {
 });
 
 
-//route is activated when user clicks CHECKOUT, does something, then REDIRECTS TO "restaurant/" aka GET "/" in this file
+
+//route is activated when user clicks CHECKOUT, does something
+//**but does not redirect to restaurant home because that is only for RESTAURANT OWNER */
 router.post("/", (req, res) => {
 
-
-
-
+  console.log("route reached")
+  res.redirect("/message")
 
 })
+
+
+
 
 
 
