@@ -8,11 +8,16 @@
   margin-left: 5vw;
   margin-right:5vw;
   background-color: lightgoldenrodyellow;
+  padding: 0.75rem;
   h3 {
     text-align: center;
   }
-  button {
-    background-color: lightblue;
+  form {
     width: 100%;
+    #ok {
+      margin-top: 0.5rem;
+      background-color: skyblue;
+      width: 100%;
+    }
   }
 }
