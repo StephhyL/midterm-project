@@ -7,8 +7,8 @@ router.get("/", (req, res) => {
   //FEEL LIKE SHOULD BE IN THE POST
   restaurantFns.getNewestOrder()
     .then((carts) => {
-      const user = null;
-      const templateVars = {carts, user}
+      const user = 1;
+      const templateVars = { carts, user }
       res.render('restaurant', templateVars)
     })
 
