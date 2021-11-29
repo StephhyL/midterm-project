@@ -47,15 +47,26 @@
       <div class="d-flex">
         <% if(!user){ %>
           <div>
-            <button class="me-2" method='GET' action='/login/:id'><a href="/login/1">Login1</a></button>
-            <button method='GET' action='/login/:id'><a href="/login/2">Login2</a></button>
+            <form action='/login/' method='POST'>
+              <input type="text" placeholder="user" name="user">
+              <input type="text" placeholder="psw" name="psw">
+              <button class="me-2">Login</button>
+            </form>
           </div>
         <%} else if(user.id === 1) { %>
-          <button class="me-2" method='GET' action='/'><a href="/">Logout</a></button>
-          <button method='GET' action='/register'>Orders</button>
+          <form action='/'  method='GET' >
+            <button class="me-2">Logout</button>
+          </form>
+          <form action='/orders' >
+            <button>Orders</button>
+          </form>
         <% } else { %>
-          <button class="me-2" method='GET' action='/'><a href="/">Logout</a></button>
-          <button method='GET' action='/register'>My Cart</button>
+          <form action='/' method='GET'>
+            <button class="me-2">Logout</button>
+          </form>
+          <from action='/myCart'>
+            <button>My Cart</button>
+          </from>
         <% } %>
       </div>
     </div>
