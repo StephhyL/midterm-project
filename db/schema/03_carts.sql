@@ -7,5 +7,6 @@ CREATE TABLE carts (
   submitted_time TIMESTAMP NOT NULL,
   duration_in_seconds SMALLINT DEFAULT 0,
   completed BOOLEAN DEFAULT false,
+  total_in_cents INTEGER NOT NULL DEFAULT 0,
   notes text
 );
