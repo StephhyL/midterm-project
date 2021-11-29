@@ -67,8 +67,18 @@
   }
 }
 
-
-#checkout-btn {
-  width: 100%;
-  background-color:AFE1AF
+.checkout {
+  display:flex;
+  justify-content: center;
+  margin-top:1rem;
+  margin-bottom: 1rem;
+  #checkout-btn {
+    width: 90%;
+    background-color: #AFE1AF;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-radius: 5px;
+  }
 }
+
+
