@@ -48,7 +48,7 @@
   </main>
 
   <aside class="cart">
-    <h3>My Cart</h3>
+    <h3 id="cart-header">My Cart</h3>
 
     <div class="cart-title">
       <h4>Item</h4>
@@ -62,29 +62,25 @@
 
     <!--SUBTOTAL, TAX, TOTAL-->
     <div class="math">
-
       <div>
         <span>Subtotal:</span>
         <span id="subtotal">$0</span>
       </div>
-
       <div>
         <span>Tax (HST 13%): </span>
         <span id="tax">$0</span>
       </div>
-
       <div>
         <span>Total: </span>
         <span id="total">$0</span>
       </div>
-
     </div>
 
-      <div>
-        <form method="POST" action="/resturant">
-          <button id="checkout-btn">Checkout</button>
-        </form>
-      </div>
+    <div>
+      <form method="POST" action="/resturant" class="checkout">
+        <button id="checkout-btn">Checkout</button>
+      </form>
+    </div>
 
   </aside>
 
