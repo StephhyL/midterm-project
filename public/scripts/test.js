@@ -1,3 +1,32 @@
+$("#checkout-btn").on("click", createNewCart(user.id))
+
+
+const createNewCart = (user) => {
+  const newCartObj = {};
+
+  newCartObj[customer_id] = user.id // user inputted that was rendered
+
+  let cartRows = $(".cart-row")
+
+  cartRows.each(function(index, element) {
+
+    let foodName = $(this).find('.cart-food-name')
+
+    let quantityElement = $(this).find('.quantity').text();
+    let quantity = Number(quantityElement);
+
+    newCartObj[foodName] = quantity
+
+  })
+
+  newCartObj["total_price"] = $("#total")
+  newCartObj["notes"] = $("#note").val();
+
+  console.log(newCartObj);
+
+}
+
+
 // GRAB THE DATA FROM MY CART
 
 /*
