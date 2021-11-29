@@ -12,8 +12,14 @@ const passwordCheck = function(userPassword, databaseResponse) {
   }
 }
 
+const adminOrCustomer = function(id) {
+  if (id === 1) {
+    return true;
+  }
+  return false;
+}
 
 
 
 
-module.exports = { passwordCheck };
+module.exports = { passwordCheck, adminOrCustomer };
