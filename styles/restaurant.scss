@@ -21,14 +21,19 @@
   }
   #order-title {
     display:flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.25rem;
     font-weight: bold;
     border-bottom: darkblue 2px solid;
-    p {
+    #order-details-title {
+      border: gold 3px solid;
+      width: 90%;
       text-align: center;
-      width: 33%;
+    }
+    #est-time-title {
+      border:springgreen 3px solid;
+      text-align: center;
     }
   }
   .order-list {
@@ -39,11 +44,66 @@
       margin-top: 1.5rem;
       margin-bottom: 1.5rem;
       display:flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      border: rgb(216, 126, 156) dashed 3px;
+
+      .order-details {
+        display:flex;
+        flex-direction: column;
+        width: 90%;
+        border: steelblue 3px solid;
+        .user-details {
+          border:tomato 3px solid;
+          display:flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding-right: 1.5rem;
+          padding-left:1.5rem;
+          div {
+            display:flex;
+          }
+          span {
+            font-weight: bold;
+            margin-right: 1rem;
+          }
+        }
+
+        .food-details {
+          border:springgreen 3px solid;
+          span {
+            font-weight: bold;
+          }
+        }
+
+        .note-details {
+          border:orange 3px solid;
+          span {
+            font-weight: bold;
+          }
+          p {
+            background-color: yellow;
+          }
+        }
+      }
+
+      .time-container {
+        border: red solid 3px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        #estimated-time {
+          width: 6rem;
+          height: 3rem;
+          margin-bottom: 1rem;
+        }
+        button {
+          background-color:lightgreen
+        }
+      }
     }
 
-    .time-container {
-      width: 20%;
-    }
   }
 }
