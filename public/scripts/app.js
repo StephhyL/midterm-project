@@ -57,20 +57,20 @@ const addRow = (title, image, price) => {
     }
   }
 
-  const $h4 = $("<h4>").addClass("cart-food-name").text(title);
+  const $pTitle = $("<p>").addClass("cart-food-name").text(title);
   const $p = $("<p>").text(image);
   const $divCartItem = $("<div>").addClass("cart-item");
   // appending food name and img into a div
-  $divCartItem.append($h4, $p);
+  $divCartItem.append($pTitle, $p);
 
   const $pPrice = $("<p>").addClass("item-price").text(price);
 
   const $minusBtn = $("<button>").addClass("minus-btn").text("-");
-  const $spanQty = $("<span>").addClass("quantity").text(1);
+  const $pQty = $("<p>").addClass("quantity").text(1);
   const $plusBtn = $("<button>").addClass("plus-btn").text("+");
   const $divCounter = $("<div>").addClass("counter");
   // appending buttons and quantity amount
-  $divCounter.append($minusBtn, $spanQty, $plusBtn);
+  $divCounter.append($minusBtn, $pQty, $plusBtn);
   const $rmBtn = $("<button>").addClass("remove-btn").text("Remove");
   const $divRemove = $("<div>")
   //appending remove button to a div
@@ -125,12 +125,6 @@ const addCartItem = (event) => {
   updateCartTotal();
 }
 
-// const addButtons = $(".add-btn")
-// for (let i=0; i < addButtons.length; i++) {
-//   let button = addButtons[i];
-//   button.addEventListener("click", addCartItem)
-// }
-
 
 /*******REMOVE ITEM FUNCTION */
 const removeCartItem = (event) => {
@@ -140,6 +134,5 @@ const removeCartItem = (event) => {
   updateCartTotal();
 }
 
-//})
 
 
