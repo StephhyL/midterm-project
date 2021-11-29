@@ -7,6 +7,7 @@ $(() => {
     let button = addButtons[i];
     button.addEventListener("click", addCartItem)
   }
+
 })
 
 /************* UPDATE CART TOTAL FUNCTIONS ********/
@@ -44,7 +45,6 @@ const updateCartTotal = () => {
   })
 
 };
-
 
 /************CREATE ROW DETAILS */
 const addRow = (title, image, price) => {
