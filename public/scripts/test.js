@@ -1,41 +1,56 @@
 $(()=> {
+  alert("Hello");
 
-  $("#checkout-btn").on("click", createNewCart)
+  $("#checkout-btn").on("click", function(e){
+    console.log("my god");
+    const newCartObj = {};
+    newCartObj["user_id"] = 2;
+    // newCartObj[customer_id] = user.id // user inputted that was rendered
+    let cartRows = $(".cart-row")
+    cartRows.each(function(index, element) {
+      let foodName = $(this).find('.cart-food-name').text()
+      let quantityElement = $(this).find('.quantity').text();
+      let quantity = Number(quantityElement);
+      newCartObj[foodName] = quantity
+    });
 
-})
-
-
-const createNewCart = () => {
-  const newCartObj = {};
-
-  newCartObj["user_id"] = 2;
-  // newCartObj[customer_id] = user.id // user inputted that was rendered
-
-  let cartRows = $(".cart-row")
-
-  cartRows.each(function(index, element) {
-
-    let foodName = $(this).find('.cart-food-name').text()
-
-    let quantityElement = $(this).find('.quantity').text();
-    let quantity = Number(quantityElement);
-
-    newCartObj[foodName] = quantity
-
-  })
-
-  let totalElement = $("#total").text(); //$226
-  let totalPrice = Number(totalElement.replace("$", "") * 100) // total price in cents
-
-  newCartObj["total_price"] = totalPrice;
-
-  newCartObj["notes"] = $("#note").val();
-
-  console.log('newCartObj---->', newCartObj);
-
-}
+    let totalElement = $("#total").text(); //$226
+    let totalPrice = Number(totalElement.replace("$", "") * 100) // total price in cents
+    newCartObj["total_price"] = totalPrice;
+    newCartObj["notes"] = $("#note").val();
+    console.log('newCartObj---->', newCartObj);
+    //once the object is create we need to make an Ajax Call
+    $.ajax({
+      url: "/newcart",
+      data: newCartObj,
+      method: "POST",
+      success: function(result){
+        alert("The data was posted");
+      },
+      error: function(err){
+        console.log("There is an error",err.message);
+      }
+    });
 
 
+  });
+});
+///
+// let data = [
+  //{id: 1, name:"rohit"},
+  //{id: 2, name:"vandy" }
+//]
+//We pass the data to the route. Then the route would go through all the data in the form of arry and then then try to insert into table 2 rows 1 by 1
+  // const createNewCart = () => {
+
+  //    }
+//   });
+
+//     }
+// })
+
+
+// module.exports = { createNewCart }
 
 
 // GRAB THE DATA FROM MY CART
