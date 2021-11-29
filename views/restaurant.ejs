@@ -24,10 +24,35 @@
 <body>
   <%- include('./partials/_nav') %>
   <h1>Restaurant's Main Page</h1>
-  <header class="top">
-    <div id="banner">
+
+  <main class="restaurant-container">
+
+    <header id="banner">
       <h3>Incoming Orders</h3>
+    </header>
+
+    <div id="order-title">
+      <p>ORDER DETAILS</p>
+      <p>ESTIMATED TIME <br> TO COMPLETE</p>
     </div>
-  </header>
+
+    <div class="order-list">
+
+      <div class="one-order">
+        <div class="order-details">
+
+
+
+          ORDER DETAILS
+
+        </div>
+        <div class="time-container">
+          <input type="text" id="estimatedTime" name="estimatedTime"></input>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
 </body>
 </html>
