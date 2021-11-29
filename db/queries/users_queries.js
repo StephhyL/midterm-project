@@ -1,4 +1,5 @@
 const connection = require('../connection');
+const { response } = require('express');
 
 const getUsers = () => {
   return connection.query(`SELECT * FROM users;`)
@@ -17,7 +18,6 @@ const getUserById = (id) => {
   return connection.query(`SELECT * FROM users WHERE id = $1;`, values)
     .then(data => {
       return data.rows[0];
-
     })
     .catch(err => {
       console.error(err.message);
@@ -25,4 +25,9 @@ const getUserById = (id) => {
     });
 };
 
-module.exports = { getUsers, getUserById }
+const getUserByName = (user) => {
+  const value = [user];
+  return connection.query(`SELECT * FROM users WHERE name = $1;`, value)
+    .then(data => { return data });
+}
+module.exports = { getUsers, getUserById, getUserByName }
