@@ -25,5 +25,4 @@ const getUserById = (id) => {
     });
 };
 
-
 module.exports = { getUsers, getUserById }
