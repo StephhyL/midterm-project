@@ -48,6 +48,42 @@ const addRow = (title, image, price) => {
   newRow.find(".remove-btn").on("click", removeCartItem)
 
   }
+
+
+/************* ADD ITEMS TO CART BUTTON */
+
+const addCartItem = (event) => {
+
+  /****RETRIVING FOODENTITY DETAILS */
+  let addbuttonClicked = event.target;
+  let foodEntityClicked = addbuttonClicked.closest(".foodEntity");
+  let foodName = $(foodEntityClicked).find(".foodName").text();
+  let foodImage = $(foodEntityClicked).find(".foodImage").text();
+  let foodPrice = $(foodEntityClicked).find(".price").text();
+
+  addRow(foodName, foodImage, foodPrice);
+  updateCartTotal();
+}
+
+const addButtons = $(".add-btn")
+for (let i=0; i < addButtons.length; i++) {
+  let button = addButtons[i];
+  button.addEventListener("click", addCartItem)
+}
+
+
+/*******REMOVE ITEM FUNCTION */
+const removeCartItem = (event) => {
+  let removeButtonClicked = event.target
+  let cartRowClicked = (removeButtonClicked.closest(".cart-row"))
+  cartRowClicked.remove();
+  updateCartTotal();
+}
+
+
+
+
+
 })
 
 
