@@ -19,6 +19,9 @@
   <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
+  <!--APP JS - MESSAGE.JS-->
+  <script type="text/javascript" src="/scripts/message.js"></script>
+
 
 </head>
 <body>
@@ -29,7 +32,10 @@
       <br>
       We will notify you with an estimated time for pick up and when it is ready for pick up!
     </h3>
-    <button type="submit">Ok</button>
+    <!--REDIRECTS BACK TO HOME PAGE-->
+    <form METHOD="GET" ACTION="/">
+      <button id="ok" type="submit">Ok</button>
+    </form>
   </div>
 </body>
 </html>
