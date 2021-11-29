@@ -18,6 +18,24 @@ const updateCartTotal = () => {
   $("#subtotal").text(`$${subtotal}`);
   $("#tax").text(`$${Math.round(subtotal * 0.13) * 100 / 100}`);
   $("#total").text(`$${Math.round((subtotal * 1.13) * 100)/ 100}`);
+
+  //current qty of this item in the cart
+  let curQty = Number(newRow.find(".quantity").text());
+  // console.log("curQty", curQty);
+  // console.log("typeof", typeof curQty)
+  newRow.find(".minus-btn").on("click", function() {
+    if (curQty > 0) {
+      curQty--;
+      newRow.find(".quantity").text(curQty);
+    }
+    updateCartTotal();
+  })
+  newRow.find(".plus-btn").on("click", function() {
+    curQty++;
+    newRow.find(".quantity").text(curQty);
+    updateCartTotal();
+  })
+
 };
 
 
@@ -64,6 +82,28 @@ const addRow = (title, image, price) => {
 
   // 'activates remove button when clicked'
   newRow.find(".remove-btn").on("click", removeCartItem)
+
+  //current qty of this item in the cart
+  let curQty = Number(newRow.find(".quantity").text());
+  // console.log("curQty", curQty);
+  // console.log("typeof", typeof curQty)
+  newRow.find(".minus-btn").on("click", function() {
+    if (curQty > 0) {
+      curQty--;
+      newRow.find(".quantity").text(curQty);
+    }
+    updateCartTotal();
+  })
+  newRow.find(".plus-btn").on("click", function() {
+    curQty++;
+    newRow.find(".quantity").text(curQty);
+    updateCartTotal();
+  })
+
+
+
+
+
 
   }
 
