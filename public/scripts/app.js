@@ -2,6 +2,24 @@
 
 $(() => {
 
+/************* UPDATE CART TOTAL FUNCTIONS ********/
+const updateCartTotal = () => {
+  let cartRows = $(".cart-row")
+  let subtotal = 0;
+  // for each row in the cart, retrieve price and quantity (jQuery objects)
+  cartRows.each(function(index, element) {
+    let priceElement = $(this).find('.item-price').text();
+    let price = Number(priceElement.replace('$', ''));
+    let quantityElement = $(this).find('.quantity').text();
+    let quantity = Number(quantityElement);
+    subtotal += (price * quantity)
+  })
+  // updating the prices
+  $("#subtotal").text(`$${subtotal}`);
+  $("#tax").text(`$${Math.round(subtotal * 0.13) * 100 / 100}`);
+  $("#total").text(`$${Math.round((subtotal * 1.13) * 100)/ 100}`);
+};
+
 
 /************CREATE ROW DETAILS */
 const addRow = (title, image, price) => {
