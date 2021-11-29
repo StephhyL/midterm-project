@@ -1,0 +1,18 @@
+.thank-you {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  // border:lightcoral 3px solid;
+  margin-left: 5vw;
+  margin-right:5vw;
+  background-color: lightgoldenrodyellow;
+  h3 {
+    text-align: center;
+  }
+  button {
+    background-color: lightblue;
+    width: 100%;
+  }
+}
