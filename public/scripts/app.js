@@ -1,6 +1,13 @@
 // Client facing scripts here
 
+//Can only get access to 'addButtons' once the page has loaded
 $(() => {
+  const addButtons = $(".add-btn")
+  for (let i=0; i < addButtons.length; i++) {
+    let button = addButtons[i];
+    button.addEventListener("click", addCartItem)
+  }
+})
 
 /************* UPDATE CART TOTAL FUNCTIONS ********/
 const updateCartTotal = () => {
@@ -100,11 +107,6 @@ const addRow = (title, image, price) => {
     updateCartTotal();
   })
 
-
-
-
-
-
   }
 
 
@@ -123,11 +125,11 @@ const addCartItem = (event) => {
   updateCartTotal();
 }
 
-const addButtons = $(".add-btn")
-for (let i=0; i < addButtons.length; i++) {
-  let button = addButtons[i];
-  button.addEventListener("click", addCartItem)
-}
+// const addButtons = $(".add-btn")
+// for (let i=0; i < addButtons.length; i++) {
+//   let button = addButtons[i];
+//   button.addEventListener("click", addCartItem)
+// }
 
 
 /*******REMOVE ITEM FUNCTION */
@@ -138,10 +140,6 @@ const removeCartItem = (event) => {
   updateCartTotal();
 }
 
-
-
-
-
-})
+//})
 
 
