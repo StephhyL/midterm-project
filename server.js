@@ -43,6 +43,8 @@ const usersRoutes = require("./routes/users");
 const homeRoutes = require("./routes/home");
 
 const userLoginRoutes = require('./routes/login');
+const restaurantRoutes = require('./routes/restaurant')
+const messageRoutes = require('./routes/message')
 // const widgetsRoutes = require("./routes/widgets");
 
 
@@ -52,6 +54,8 @@ const userLoginRoutes = require('./routes/login');
 app.use("/api/users", usersRoutes);
 app.use('/', homeRoutes)
 app.use('/login', userLoginRoutes)
+app.use("/restaurant", restaurantRoutes);
+app.use("/message", messageRoutes);
 // app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
