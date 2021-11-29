@@ -8,6 +8,7 @@ $(()=> {
 const createNewCart = () => {
   const newCartObj = {};
 
+  newCartObj["user_id"] = 2;
   // newCartObj[customer_id] = user.id // user inputted that was rendered
 
   let cartRows = $(".cart-row")
@@ -24,7 +25,7 @@ const createNewCart = () => {
   })
 
   let totalElement = $("#total").text(); //$226
-  let totalPrice = Number(totalElement.replace("$", ""))
+  let totalPrice = Number(totalElement.replace("$", "") * 100) // total price in cents
 
   newCartObj["total_price"] = totalPrice;
 
