@@ -7,20 +7,16 @@ const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUT
 // let createNewCart = require('../scripts/test.js')
 const retrieveFoods = (obj) => {
   let foods = '';
-  for(let food_item in obj) {
-    foods +=  `${obj[food_item].qty} x ${food_item}\n`;
+  for (let food_item in obj) {
+    foods += `${obj[food_item].qty} x ${food_item}\n`;
   }
   return foods;
 };
 router.post("/", (req, res) => {
-  // console.log("WE received data",req.body);
   let temp = req.body;
-  console.log("req.body---->", temp);
-  // console.log(client);
 
   newCartFns.getNewCart(req.body.addCart)
     .then((new_cart) => {
-      console.log("new_cart--->", new_cart)
       newCartFns.addFoodToCart(req.body.addCartFoods, new_cart)
       let customerMessage = `
       Thank you for placing an order with our restaurant.
@@ -57,11 +53,6 @@ router.post("/", (req, res) => {
       // res.send(new_cart)
       // res.render('message');
     })
-
-
-
-  //     return new_cart;
-  //   })
 });
 
 
