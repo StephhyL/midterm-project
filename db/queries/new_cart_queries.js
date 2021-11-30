@@ -57,10 +57,6 @@ const addFoodToCart = (object1, object2) => {
   // $3 - QTY_ID
   // object 2.qty
 
-
-
-
-
 }
 
 

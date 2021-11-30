@@ -10,8 +10,10 @@ router.post("/", (req, res) => {
 
   newCartFns.getNewCart(req.body.addCart)
     .then((new_cart) => {
-      console.log("new_cart--->", new_cart)
-      newCartFns.addFoodToCart(req.body.addCartFoods, new_cart)
+      console.log("new_cart--->", new_cart);
+      newCartFns.addFoodToCart(req.body.addCartFoods, new_cart);
+      //tiwilio customer
+      //twilio restaurant
       res.send(new_cart)
     })
 
