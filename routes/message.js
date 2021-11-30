@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   console.log("route reached")
-  const user = null;
-  templateVars = {user}
-  res.render('message', templateVars)
+  const user = 2;
+  templateVars = {user};
+  res.render('message', templateVars);
 })
 
 
