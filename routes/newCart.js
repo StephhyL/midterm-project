@@ -20,13 +20,6 @@ router.post("/", (req, res) => {
 
   newCartFns.getNewCart(req.body.addCart)
     .then((new_cart) => {
-<<<<<<< HEAD
-      console.log("new_cart--->", new_cart);
-      newCartFns.addFoodToCart(req.body.addCartFoods, new_cart);
-      //tiwilio customer
-      //twilio restaurant
-      res.send(new_cart)
-=======
       console.log("new_cart--->", new_cart)
       newCartFns.addFoodToCart(req.body.addCartFoods, new_cart)
       let customerMessage = `
@@ -63,7 +56,6 @@ router.post("/", (req, res) => {
       //   .catch(err => console.log(err));
       // res.send(new_cart)
       // res.render('message');
->>>>>>> 8a629e148633aa8f63bcab9108ccfd84f31da5db
     })
 
 
