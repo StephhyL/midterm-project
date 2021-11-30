@@ -27,7 +27,7 @@ $(()=> {
     // {addCart: { id, totalPrice, Notes} addcartFoods: {id: idNumber, quantity: quantityNumber}}
 
     let totalElement = $("#total").text(); //$226
-    let totalPrice = Number(totalElement.replace("$", "") * 100) // total price in cents
+    let totalPrice = Math.round(Number(totalElement.replace("$", "") * 100)); // total price in cents
     newCartObj.addCart["total_price"] = totalPrice;
     newCartObj.addCart["notes"] = $("#note").val();
     console.log(newCartObj["addCart"]);
@@ -46,7 +46,17 @@ $(()=> {
         console.log("There is an error",err.message);
       }
     });
-
+    // $.ajax({
+    //   url: "/message",
+    //   //JSON.stringify(newCartObj),
+    //   method: "GET",
+    //   success: function(result){
+    //     alert("You were sucussefully redirected to /message");
+    //   },
+    //   error: function(err){
+    //     console.log("There is an error",err.message);
+    //   }
+    // });
 
   });
 });
