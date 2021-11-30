@@ -1,8 +1,7 @@
 // load .env data into process.env
 require("dotenv").config();
 
-
-
+require('socket.io')()
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
@@ -16,7 +15,6 @@ const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUT
 
 
 // connection imports
-
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
