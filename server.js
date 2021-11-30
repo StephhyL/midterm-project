@@ -1,7 +1,6 @@
 // load .env data into process.env
 require("dotenv").config();
 
-require('socket.io')()
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
@@ -10,8 +9,28 @@ const app = express();
 const morgan = require("morgan");
 const dbConnection = require('./db/connection');
 
+//server for socket.io
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*'
+  }
+});
+
+
+//Connecting to server.io; assigns a random id to anyone connected to our server
+io.on('connection', (socket) => {
+  console.log("socket connected")
+  console.log("socket id ---->", socket.id)
+  socket.on("message", (data) => {
+    console.log(data);
+    socket.broadcast.emit("message", data)
+  })
+})
+
 const twilio = require('twilio'); //Twilio sms api
 const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
 
 
 // connection imports
@@ -19,10 +38,21 @@ const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUT
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-app.use(morgan("dev"));
+//app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+
+//******************
+app.get('/socket', (req, res) => {
+  res.render('index')
+})
+
+
+
+
+
+
 
 app.use(
   "/styles",
@@ -87,6 +117,6 @@ app.use("/newcart", newCartRoutes);
 //   .then((message) => console.log(message.sid))
 //   .catch(err => console.log(err));
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

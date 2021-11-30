@@ -1,7 +1,12 @@
 // Client facing scripts here
 
+
+
+
 //Can only get access to 'addButtons' once the page has loaded
 $(() => {
+
+
   const addButtons = $(".add-btn")
   for (let i=0; i < addButtons.length; i++) {
     let button = addButtons[i];
