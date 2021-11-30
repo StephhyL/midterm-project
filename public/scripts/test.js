@@ -3,26 +3,41 @@ $(()=> {
 
   $("#checkout-btn").on("click", function(e){
     console.log("my god");
-    const newCartObj = {};
-    newCartObj["user_id"] = 2;
+
+    const newCartObj = {
+      addCart: {},
+      addCartFoods: {}
+    };
+    newCartObj.addCart["user_id"] = 2;
     // newCartObj[customer_id] = user.id // user inputted that was rendered
     let cartRows = $(".cart-row")
     cartRows.each(function(index, element) {
+      //console.log("HELLLO")
       let foodName = $(this).find('.cart-food-name').text()
+      let foodId = $(this).find('.cart-food-id').text();
+      console.log("foodId------>", foodId);
+
+
       let quantityElement = $(this).find('.quantity').text();
       let quantity = Number(quantityElement);
-      newCartObj[foodName] = quantity
+      newCartObj.addCartFoods[foodName] = {  id : foodId, qty : quantity }
+
+
     });
+    // {addCart: { id, totalPrice, Notes} addcartFoods: {id: idNumber, quantity: quantityNumber}}
 
     let totalElement = $("#total").text(); //$226
     let totalPrice = Number(totalElement.replace("$", "") * 100) // total price in cents
-    newCartObj["total_price"] = totalPrice;
-    newCartObj["notes"] = $("#note").val();
-    console.log('newCartObj---->', newCartObj);
+    newCartObj.addCart["total_price"] = totalPrice;
+    newCartObj.addCart["notes"] = $("#note").val();
+    console.log(newCartObj["addCart"]);
+    console.log(newCartObj["addCartFoods"]);
+
     //once the object is create we need to make an Ajax Call
     $.ajax({
       url: "/newcart",
-      data: newCartObj,
+      data:  newCartObj,
+      //JSON.stringify(newCartObj),
       method: "POST",
       success: function(result){
         alert("The data was posted");

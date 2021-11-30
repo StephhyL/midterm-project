@@ -40,6 +40,7 @@
           <div class="col-8">
             <div class="card-body">
               <h4 class="card-title foodName"><%= food_item.name %></h4>
+              <h4 style="display:none" class="foodId" ><%= food_item.id %></h4>
               <p class="card-text"><%= food_item.description %></p>
               <h4 class="card-text text-end font-italic price">$<%= food_item.price_in_cents / 100 %></h4>
               <div>

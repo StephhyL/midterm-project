@@ -48,7 +48,7 @@ const updateCartTotal = () => {
 
 
 /************CREATE ROW DETAILS */
-const addRow = (title, image, price) => {
+const addRow = (title, food_id, image, price) => {
 
   const cartFoodNames = $(".cart-food-name")
   for (let i=0; i<cartFoodNames.length; i++) {
@@ -59,10 +59,11 @@ const addRow = (title, image, price) => {
   }
 
   const $pTitle = $("<p>").addClass("cart-food-name").text(title);
+  const $pFoodId = $("<p>").addClass("cart-food-id").text(food_id)
   const $p = $("<p>").text(image);
   const $divCartItem = $("<div>").addClass("cart-item");
   // appending food name and img into a div
-  $divCartItem.append($pTitle, $p);
+  $divCartItem.append($pTitle,$pFoodId, $p);
 
   const $pPrice = $("<p>").addClass("item-price").text(price);
 
@@ -120,10 +121,11 @@ const addCartItem = (event) => {
   let addbuttonClicked = event.target;
   let foodEntityClicked = addbuttonClicked.closest(".foodEntity");
   let foodName = $(foodEntityClicked).find(".foodName").text();
+  let foodId = $(foodEntityClicked).find(".foodId").text();
   let foodImage = $(foodEntityClicked).find(".foodImage").text();
   let foodPrice = $(foodEntityClicked).find(".price").text();
 
-  addRow(foodName, foodImage, foodPrice);
+  addRow(foodName,foodId, foodImage, foodPrice);
   updateCartTotal();
 }
 

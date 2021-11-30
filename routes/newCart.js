@@ -5,10 +5,19 @@ const newCartFns = require('../db/queries/new_cart_queries')
 
 router.post("/", (req, res) => {
   // console.log("WE received data",req.body);
-  newCartFns.getNewCart(req.body)
+  let temp = req.body;
+  console.log("req.body---->", temp);
+
+  newCartFns.getNewCart(req.body.addCart)
     .then((new_cart) => {
-      res.send(new_cart);
+      console.log("new_cart--->", new_cart)
+      newCartFns.addFoodToCart(req.body.addCartFoods, new_cart)
+      res.send(new_cart)
     })
+
+
+  //     return new_cart;
+  //   })
 });
 
 
