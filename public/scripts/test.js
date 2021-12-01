@@ -27,17 +27,36 @@ $(() => {
     console.log(newCartObj["addCartFoods"]);
 
     //once the object is create we need to make an Ajax Call
-    $.ajax({
-      url: "/newcart",
-      data: newCartObj,
-      method: "POST",
-      success: function() {
-        alert("The data was posted");
-      },
-      error: function(err) {
-        console.log("There is an error", err.message);
-      }
-    });
+
+
+    cartRows.each(function(index, element) {
+      element.remove();
+    })
+    updateCartTotal();
+    $("#note").val("");
+    alert('Order has been placed and you will be notified with an estimated time for your order. Thank you for your preference')
+    $.post("/newcart", newCartObj);
+    /*     .fail(function(res) {
+          console.log(res)
+          alert("error");
+        })
+        .always(function(res) {
+          console.log(res);
+          alert("finished");
+        }); */
+
+    /*    $.ajax({
+         url: "/newcart",
+         data: newCartObj,
+         method: "POST",
+         success: function() {
+           console.log('We should get this consoled');
+           alert("The data was posted");
+         },
+         error: function(err) {
+           console.log("There is an error", err.message);
+         }
+       }); */
 
   });
 });
