@@ -21,7 +21,7 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <!-- RESTAURANT SUBMIT BUTTON JS -->
-  <script type="text/javascript" src="/scripts/restaurant_submit.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/restaurant_submit.js"></script> -->
 
 </head>
 <body>
@@ -29,6 +29,8 @@
   <h1>Restaurant's Main Page</h1>
 
   <main class="restaurant-container">
+
+    <!-- <p id="incoming-order-here"></p> -->
 
     <header id="banner">
       <h3>Incoming Orders</h3>
@@ -41,15 +43,18 @@
     </div>
 
     <div class="order-list">
-      <!--EMPTY DIV FOR INCOMING ORDER-->
+      <!-- DIV FOR INCOMING ORDER-->
+      <!--SKELETON DIV FOR INCOMING ORDER-->
       <div class="one-order">
         <div class="order-details">
           <p id="incoming-order-here"></p>
         </div>
 
         <div class="time-container">
-          <input type="text" id="estimated-time" name="estimated-time"></input>
-          <button type="submit" id="submit-btn">Submit</button>
+          <form>
+            <textarea type="text" class="estimated-time" name="estimated-time"></textarea>
+          </form>
+          <button type="submit" class="submit-btn">Submit</button>
         </div>
 
         <div class="div-check">
@@ -111,18 +116,20 @@
         console.log("restaurant.ejs is connected")
       })
       socket.on("inputValue", (data) => {
-        console.log("DATTTA", data)
+        // console.log("Reached restaurant ejs line 117-- >", data)
 
         const $pData = $("<p>").addClass(".incoming-order-here").text(data);
         const $divOrderDetails = $("<div>").addClass("order-details");
         //appending p with incoming data to a div tag for the "order" side
         $divOrderDetails.append($pData);
 
-        const $input = $("<input>").attr("type", "text").attr("name", "estimated-time").attr("id", "estimated-time");
-        const $button = $("<button>").attr("type", "submit").attr("id", "submit-btn").text("Submit");
+
+
+        const $textarea = $("<textarea>").addClass("estimated-time").attr("type", "text").attr("name", "estimated-time");
+        const $button = $("<button>").addClass("submit-btn").attr("type", "submit").text("Submit");
         const $timeContainer = $("<div>").addClass("time-container");
         //appending to make the textbox for restaurant to input est. time
-        $timeContainer.append($input, $button);
+        $timeContainer.append($textarea, $button);
 
         $inputCk = $("<input>").attr("type", "checkbox");
         $divCk = $("<div>").addClass("div-check");
@@ -132,9 +139,10 @@
         const $divOneOrder = $("<div>").addClass("one-order")
         $divOneOrder.append($divOrderDetails, $timeContainer, $divCk)
 
-        $(".order-list").prepend($divOneOrder)
+        $(".order-list").prepend($divOneOrder);
 
         // $("#incoming-order-here").text(data);
+
         // document.querySelector('#incoming-order-here').innerHTML = data;
       })
     </script>
