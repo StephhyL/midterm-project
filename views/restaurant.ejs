@@ -21,7 +21,7 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <!-- RESTAURANT SUBMIT BUTTON JS -->
-  <!-- <script type="text/javascript" src="/scripts/restaurant_submit.js"></script> -->
+  <script type="text/javascript" src="/scripts/restaurant_submit.js"></script>
 
 </head>
 <body>
@@ -124,12 +124,15 @@
         $divOrderDetails.append($pData);
 
 
-
+        const $form = $("<form>");
         const $textarea = $("<textarea>").addClass("estimated-time").attr("type", "text").attr("name", "estimated-time");
+        //appending textbox to form
+        $form.append($textarea);
+
         const $button = $("<button>").addClass("submit-btn").attr("type", "submit").text("Submit");
         const $timeContainer = $("<div>").addClass("time-container");
         //appending to make the textbox for restaurant to input est. time
-        $timeContainer.append($textarea, $button);
+        $timeContainer.append($form, $button);
 
         $inputCk = $("<input>").attr("type", "checkbox");
         $divCk = $("<div>").addClass("div-check");
