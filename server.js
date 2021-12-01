@@ -1,8 +1,6 @@
 // load .env data into process.env
 require("dotenv").config();
 
-
-
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
@@ -10,21 +8,58 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const dbConnection = require('./db/connection');
+const socket_client = require('./socket-client')
+
+//server for socket.io
+const server = require('http').createServer(app);
+// const {Server} = require('socket.io')
+// const io = new Server(server)
+
+const io = require("socket.io")(server, {   cors: {     origin: "*"}});
+
+
+
+// const io = (server, {
+//   cors: {
+//     origin: '*'
+//   }
+// });
+
+// require('socket.io')
+
+//Connecting to server.io; assigns a random id to anyone connected to our server
+io.on('connection', (socket) => {
+  console.log("socket connected")
+  console.log("socket id ---->", socket.id)
+  socket.on("inputValue" , (data) => {
+    console.log(data);
+    console.log("The above is new data received")
+    io.emit("inputValue", data)
+    // socket.to(room).emit("receive-message", message);
+  })
+})
 
 const twilio = require('twilio'); //Twilio sms api
 const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 
-// connection imports
 
+// connection imports
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-app.use(morgan("dev"));
+//app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+
+//******************
+app.get('/socket', (req, res) => {
+  res.render('index')
+})
+
+
 
 app.use(
   "/styles",
@@ -57,6 +92,12 @@ app.use("/newcart", newCartRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
+
+server.listen(3000, ()=> {
+  console.log("This is socket port 3000")
+})
+
+socket_client();
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
