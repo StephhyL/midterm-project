@@ -26,24 +26,6 @@
   <%- include('./partials/_nav') %>
   <h1>Restaurant's Main Page</h1>
 
-  <h2 id="bye"></h2>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js" integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <script>
-
-    const socket = io("ws://localhost:3000");
-    socket.on('connect', ()=> {
-      console.log("restaurant.ejs is connected")
-    })
-    socket.on("inputValue", (data) => {
-      console.log("DATTTA", data)
-      document.querySelector('h2').innerHTML = data;
-    })
-  </script>
-
-
-
-
   <main class="restaurant-container">
 
     <header id="banner">
@@ -56,8 +38,19 @@
     </div>
 
     <div class="order-list">
+      <!--EMPTY DIV FOR INCOMING ORDER-->
+      <!-- <div class="one-order">
+        <div class="order-details">
+          <p id="incoming-order-here"></p>
+        </div>
 
-      <div class="one-order">
+        <div class="time-container">
+          <input type="text" id="estimated-time" name="estimated-time"></input>
+          <button type="submit">Submit</button>
+        </div>
+      </div> -->
+
+      <!-- <div class="one-order">
         <div class="order-details">
           <div class="user-details">
             <div>
@@ -86,7 +79,7 @@
           <input type="text" id="estimated-time" name="estimated-time"></input>
           <button type="submit">Submit</button>
         </div>
-      </div>
+      </div> -->
 
     </div>
 
@@ -101,7 +94,37 @@
       </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js" integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script>
+
+      const socket = io("ws://localhost:3000");
+      socket.on('connect', () => {
+        console.log("restaurant.ejs is connected")
+      })
+      socket.on("inputValue", (data) => {
+        console.log("DATTTA", data)
+
+        const $pData = $("<p>").addClass(".incoming-order-here").text(data);
+        const $divOrderDetails = $("<div>").addClass("order-details");
+        //appending p with incoming data to a div tag for the "order" side
+        $divOrderDetails.append($pData);
+
+        const $input = $("<input>").attr("type", "text").attr("name", "estimated-time").attr("id", "estimated-time");
+        const $button = $("<button>").attr("type", "submit").text("Submit");
+        const $timeContainer = $("<div>").addClass("time-container");
+        //appending to make the textbox for restaurant to input est. time
+        $timeContainer.append($input, $button);
+
+        const $divOneOrder = $("<div>").addClass("one-order")
+        $divOneOrder.append($divOrderDetails, $timeContainer)
+
+        $(".order-list").prepend($divOneOrder)
+
+        // $("#incoming-order-here").text(data);
+        // document.querySelector('#incoming-order-here').innerHTML = data;
+      })
+    </script>
 
 
   </main>
