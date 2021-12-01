@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: dashed 3px green;
+  // border: dashed 3px green;
   background-color: white;
   #banner {
     display: flex;
@@ -21,19 +21,22 @@
   #order-title {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items:center;
     font-size: 1.25rem;
     font-weight: bold;
     border-bottom: darkblue 2px solid;
     background-color: peachpuff;
+    padding-right: 1.5rem;
     #order-details-title {
-      border: gold 3px solid;
-      width: 90%;
+      // border: gold 3px solid;
+      width: 60%;
       text-align: center;
     }
     #est-time-title {
-      border: springgreen 3px solid;
+      // border: springgreen 3px solid;
       text-align: center;
+      font-size: 1rem;
+      margin-right: 3rem;
     }
   }
   .order-list {
@@ -49,43 +52,44 @@
 
       .order-details {
         display: flex;
-        flex-direction: column;
-        width: 90%;
-        border: steelblue 3px solid;
-        .user-details {
-          border: tomato 3px solid;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          padding-right: 1.5rem;
-          padding-left: 1.5rem;
-          div {
-            display: flex;
-          }
-          span {
-            font-weight: bold;
-            margin-right: 1rem;
-          }
-        }
-
-        .food-details {
-          border: springgreen 3px solid;
-          span {
-            font-weight: bold;
-          }
-        }
-
-        .note-details {
-          border: orange 3px solid;
-          span {
-            font-weight: bold;
-          }
-          p {
-            background-color: yellow;
-          }
-        }
+        border: 3px solid yellow;
+        width:60%;
       }
+        // .user-details {
+        //   border: tomato 3px solid;
+        //   display: flex;
+        //   flex-direction: row;
+        //   justify-content: space-between;
+        //   align-items: center;
+        //   padding-right: 1.5rem;
+        //   padding-left: 1.5rem;
+        //   div {
+        //     display: flex;
+        //   }
+        //   span {
+        //     font-weight: bold;
+        //     margin-right: 1rem;
+        //   }
+        // }
+
+        // .food-details {
+        //   border: springgreen 3px solid;
+        //   span {
+        //     font-weight: bold;
+      //     }
+      //   }
+
+      //   .note-details {
+      //     border: orange 3px solid;
+      //     span {
+      //       font-weight: bold;
+      //     }
+      //     p {
+      //       background-color: yellow;
+      //     }
+      //   }
+      // }
+
 
       .time-container {
         border: red solid 3px;
@@ -93,7 +97,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 0.5rem;
+        width: 20%;
+        // padding: 0.5rem;
         #estimated-time {
           width: 6rem;
           height: 3rem;
@@ -103,6 +108,26 @@
           background-color: lightgreen;
         }
       }
-    }
+
+      .div-check {
+        display:flex;
+        border: purple solid 4px;
+        width: 20%;
+        justify-content: center;
+        align-items: center;
+        input {
+          display: flex;
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+      }
+
+  footer {
+    border-top: 3px solid black;
+    background-color: pink;
+    margin-top: 2rem;
+  }
+
   }
 }
