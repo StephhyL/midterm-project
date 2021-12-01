@@ -34,6 +34,7 @@ io.on('connection', (socket) => {
   socket.on("inputValue" , (data) => {
     console.log("The data below is received from server.js line 35 (customer to restaurant)->")
     console.log(data);
+
     io.emit("inputValue", data)
     // socket.to(room).emit("receive-message", message);
   })

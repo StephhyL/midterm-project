@@ -50,6 +50,14 @@ router.post("/", (req, res) => {
       Customers Notes: ${data.notes}.
       `;
 
+
+      const orderObj = {
+        customerId : temp.addCart['user_id'],
+        time: data.submitted_time,
+        listOfFoods: retrieveFoods(temp.addCartFoods),
+        notes: data.notes,
+        total: (data.total_in_cents) / 100
+      }
       console.log("restaurant Message --->", restaurantMessage)
       // socket.on("message", (data) => {
       //  $('#yes').html(data)
@@ -73,7 +81,7 @@ router.post("/", (req, res) => {
       socket_client()
       .then((socket)=> {
         console.log("Inside socket in newCart line 76 ->")
-        socket.emit("inputValue", restaurantMessage)
+        socket.emit("inputValue", orderObj)
       })
       .catch((err)=> {
         console.log("yeah, an error :(")

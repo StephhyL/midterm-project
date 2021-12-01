@@ -77,11 +77,7 @@
           </div>
           <div class="food-details">
             <span>Food to Prepare:</span>
-            <ul>
-              <li>1 x Pizza</li>
-              <li>1 x Coffee</li>
-              <li>3 x Hamburgers</li>
-            </ul>
+            <span>List of foods in a string</span>
           </div>
           <div class="note-details">
             <span>Customer Notes:</span>
@@ -123,6 +119,8 @@
       socket.on("inputValue", (data) => {
 
 
+        //data is now that OBJECT from newCart.js ********
+
         // console.log("Reached restaurant ejs line 117-- >", data)
         console.log("data in restaurant.ejs socket -----")
         console.log(data);
@@ -132,40 +130,87 @@
           let submitBtnClicked = $(event.target);
           submitBtnClicked.css("background-color", "red");
           let estTime = submitBtnClicked.closest(".time-container").find(".estimated-time").val();
-          let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
+
+          // CREATE AN OBJECT
+
+          // let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
           //hard coded post request
-          $.post("/login/2", estTimeMessage);
+          $.post("/login/2", {time:estTime});
         };
 
-        const $pData = $("<p>").addClass(".incoming-order-here").text(data);
-        const $divOrderDetails = $("<div>").addClass("order-details");
-        //appending p with incoming data to a div tag for the "order" side
-        $divOrderDetails.append($pData);
+        const newOrder = function(orderObj) {
+          return `
+          <div class="one-order">
+            <div class="order-details">
+              <div class="user-details">
+                <div>
+                    <span>Customer ID: </span>
+                    <p> ${orderObj.customerId}</p>
+                </div>
+                <div>
+                    <span>Time of Order Placement:</span>
+                    <p>${orderObj.time}</p>
+                </div>
+              </div>
+              <div class="food-details">
+                <span>Food to Prepare:</span>
+                <span>${orderObj.listOfFoods}</span>
+                <span> Total</span>
+                <span> ${orderObj.total} </span>
+              </div>
+              <div class="note-details">
+                <span>Customer Notes:</span>
+                <p>${orderObj.notes}</p>
+              </div>
+            </div>
+            <div class="time-container">
+              <form>
+                <textarea type="text" class="estimated-time" name="estimated-time"></textarea>
+              </form>
+              <button type="submit" class="submit-btn"> Submit</button>
+            </div>
+            <div class="div-check">
+                <input type="checkbox"/>
+            </div>
+          </div>`
+        };
+
+        $(".order-list").prepend(newOrder(data));
+
+        // 'activates submit button when clicked'
+       $(".one-order").find(".submit-btn").on("click", submitTime)
 
 
-        const $form = $("<form>");
-        const $textarea = $("<textarea>").addClass("estimated-time").attr("type", "text").attr("name", "estimated-time");
-        //appending textbox to form
-        $form.append($textarea);
 
-        const $button = $("<button>").addClass("submit-btn").attr("type", "submit").text("Submit");
-        const $timeContainer = $("<div>").addClass("time-container");
-        //appending to make the textbox for restaurant to input est. time
-        $timeContainer.append($form, $button);
-
-        $inputCk = $("<input>").attr("type", "checkbox");
-        $divCk = $("<div>").addClass("div-check");
-        $divCk.append($inputCk)
+        // const $pData = $("<p>").addClass(".incoming-order-here").text(data);
+        // const $divOrderDetails = $("<div>").addClass("order-details");
+        // //appending p with incoming data to a div tag for the "order" side
+        // $divOrderDetails.append($pData);
 
 
-        const $divOneOrder = $("<div>").addClass("one-order")
-        $divOneOrder.append($divOrderDetails, $timeContainer, $divCk)
+        // const $form = $("<form>");
+        // const $textarea = $("<textarea>").addClass("estimated-time").attr("type", "text").attr("name", "estimated-time");
+        // //appending textbox to form
+        // $form.append($textarea);
 
-        $(".order-list").prepend($divOneOrder);
+        // const $button = $("<button>").addClass("submit-btn").attr("type", "submit").text("Submit");
+        // const $timeContainer = $("<div>").addClass("time-container");
+        // //appending to make the textbox for restaurant to input est. time
+        // $timeContainer.append($form, $button);
+
+        // $inputCk = $("<input>").attr("type", "checkbox");
+        // $divCk = $("<div>").addClass("div-check");
+        // $divCk.append($inputCk)
+
+
+        // const $divOneOrder = $("<div>").addClass("one-order")
+        // $divOneOrder.append($divOrderDetails, $timeContainer, $divCk)
+
+        // $(".order-list").prepend($divOneOrder);
 
 
         // 'activates submit button when clicked'
-        $divOneOrder.find(".submit-btn").on("click", submitTime)
+        // $divOneOrder.find(".submit-btn").on("click", submitTime)
 
 
         // $("#incoming-order-here").text(data);
