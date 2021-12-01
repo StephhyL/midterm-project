@@ -60,25 +60,7 @@ router.post("/", (req, res) => {
         total: (data.total_in_cents) / 100
       }
       console.log("restaurant Message --->", restaurantMessage)
-      // socket.on("message", (data) => {
-      //  $('#yes').html(data)
-      // })
 
-      // const sendMessage = () => {
-      // const messageInput = $('.hi')
-      // const message = messageInput.val();
-      //   console.log("send message function")
-      //   socket_client().then((socket)=> {
-      //     console.log("yes, inside the socket_client")
-      //     socket.emit("inputValue", restaurantMessage)
-      //   })
-      //   // socket.emit('message', restaurantMessage)
-      // }
-
-      // sendMessage();
-
-
-      // console.log("send message function")
       socket_client()
         .then((socket) => {
           console.log("Inside socket in newCart line 76 ->")
@@ -89,24 +71,24 @@ router.post("/", (req, res) => {
           console.log(err.message)
         })
 
-      // client.messages
-      //   .create({
-      //     body: customerMessage,
-      //     to: process.env.TWILIO_CUSTOMER_PHONE_NUMBER, // Text this number
-      //     from: process.env.TWILIO_PHONE_NUMBER, // From a valid Twilio number
-      //   })
-      //   .then((message) => console.log(message.sid))
-      //   .catch(err => console.log(err));
-      // client.messages
-      //   .create({
-      //     body: restaurantMessage,
-      //     to: process.env.TWILIO_RESTAURANT_PHONE_NUMBER, // Text this number
-      //     from: process.env.TWILIO_PHONE_NUMBER, // From a valid Twilio number
-      //   })
-      //   .then((message) => console.log(message.sid))
-      //   .catch(err => console.log(err));
-      // res.send(new_cart)
-      // res.render('message');
+      client.messages
+        .create({
+          body: customerMessage,
+          to: process.env.TWILIO_CUSTOMER_PHONE_NUMBER, // Text this number
+          from: process.env.TWILIO_PHONE_NUMBER, // From a valid Twilio number
+        })
+        .then((message) => console.log(message.sid))
+        .catch(err => console.log(err));
+      client.messages
+        .create({
+          body: restaurantMessage,
+          to: process.env.TWILIO_RESTAURANT_PHONE_NUMBER, // Text this number
+          from: process.env.TWILIO_PHONE_NUMBER, // From a valid Twilio number
+        })
+        .then((message) => console.log(message.sid))
+        .catch(err => console.log(err));
+      res.send(new_cart)
+      res.render('message');
     })
     .catch(err => console.log(err.message))
 });

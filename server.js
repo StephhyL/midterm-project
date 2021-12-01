@@ -15,7 +15,7 @@ const server = require('http').createServer(app);
 // const {Server} = require('socket.io')
 // const io = new Server(server)
 
-const io = require("socket.io")(server, {   cors: {     origin: "*"}});
+const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 
 
@@ -31,7 +31,7 @@ const io = require("socket.io")(server, {   cors: {     origin: "*"}});
 io.on('connection', (socket) => {
   console.log("new socket connection made (server.js)")
   console.log("socket id (server.js file) ---->", socket.id)
-  socket.on("inputValue" , (data) => {
+  socket.on("inputValue", (data) => {
     console.log("The data below is received from server.js line 35 (customer to restaurant)->")
     console.log(data);
 
@@ -39,11 +39,18 @@ io.on('connection', (socket) => {
     // socket.to(room).emit("receive-message", message);
   })
 
-  socket.on("time-message", (data)=> {
+  socket.on("time-message", (data) => {
     console.log("reached the server.js socket for restaurant to customer notification for est time:");
     console.log(data);
     io.emit("time-message", data)
   })
+
+  socket.on("orderCompleted", (data) => {
+    console.log("Completed Order on the servers.ejs line: 49");
+    console.log(data);
+    io.emit("orderCompleted", data)
+  })
+
 
 })
 
@@ -101,7 +108,7 @@ app.use("/newcart", newCartRoutes);
 // Note: mount other resources here, using the same pattern above
 
 
-server.listen(3000, ()=> {
+server.listen(3000, () => {
   console.log("This is socket port 3000")
 })
 

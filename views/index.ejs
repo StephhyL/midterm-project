@@ -143,6 +143,13 @@
           </div>
          `
       }
+
+
+
+
+
+
+
       // console.log("newNotification(data)")
       // console.log(newNotification(data));
       $(".notification").prepend(newNotification(data));
@@ -153,6 +160,26 @@
 
 
     })
+
+    socket.on("orderCompleted", (data) => {
+
+      console.log("orderCompleted data passed in here on index.ejs line 156--", data)
+
+      const completedNotification = function(obj) {
+        return`<div class="one-notification">
+               <div class="notification-text">
+              <span>Hello!</span>
+              <p>Your order <span>${obj.cartId}</span> Has been completed and its ready for pickup. See you soon!</p>
+            </div>
+            <footer>
+              <button class="ok-btn">OK</button>
+            </footer>
+          </div>
+         `
+      }
+
+      $(".notification").prepend(completedNotification(data));
+    });
 
   </script>
 

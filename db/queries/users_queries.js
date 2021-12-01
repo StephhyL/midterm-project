@@ -42,7 +42,18 @@ const updateTime = (timeAndCartId) => {
       return err.message;
     });
 }
+const completedOrder = (obj) => {
+  const value = [true, obj.cartId];
+  return connection.query(`UPDATE carts
+  SET completed = $1
+  WHERE id = $2 RETURNING *;`, value)
+    .then(data => data.rows)
+    .catch(err => {
+      console.error(err.message);
+      return err.message;
+    });
+}
 
 
 
-module.exports = { getUsers, getUserById, getUserByName, updateTime }
+module.exports = { getUsers, getUserById, getUserByName, updateTime, completedOrder }
