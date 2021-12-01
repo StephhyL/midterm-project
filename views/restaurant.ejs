@@ -47,7 +47,7 @@
       <!--SKELETON DIV FOR INCOMING ORDER-->
       <div class="one-order">
         <div class="order-details">
-          <p id="incoming-order-here"></p>
+          <p id="incoming-order-here">Hard-Coded Layout as Sample (for CSS)</p>
         </div>
 
         <div class="time-container">
@@ -125,6 +125,7 @@
         //SUBMIT BUTTON THAT TRIGGERS AJAX POST REQUEST
         const submitTime = (event) => {
           let submitBtnClicked = $(event.target);
+          submitBtnClicked.css("background-color", "red");
           let estTime = submitBtnClicked.closest(".time-container").find(".estimated-time").val();
           let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
           //hard coded post request
