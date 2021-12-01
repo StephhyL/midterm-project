@@ -69,6 +69,8 @@
             <div>
                 <span>Customer ID: </span>
                 <p>3</p>
+                <span>Order ID: </span>
+                <span class="order-id">${orderObj.cartId}</span>
             </div>
             <div>
                 <span>Time of Order Placement:</span>
@@ -131,11 +133,17 @@
           submitBtnClicked.css("background-color", "red");
           let estTime = submitBtnClicked.closest(".time-container").find(".estimated-time").val();
 
-          // CREATE AN OBJECT
+          let orderId = submitBtnClicked.closest(".one-order").find(".order-id").text();
 
+          // CREATE AN OBJECT
+          const prepObj = {
+            orderId: orderId,
+            time: estTime,
+          }
+          // console.log(prepObj);
           // let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
           //hard coded post request
-          $.post("/login/2", {time:estTime});
+          $.post("/login/2", prepObj);
         };
 
         const newOrder = function(orderObj) {
@@ -146,6 +154,8 @@
                 <div>
                     <span>Customer ID: </span>
                     <p> ${orderObj.customerId}</p>
+                    <span>Order ID: </span>
+                    <span class="order-id">${orderObj.cartId}</span>
                 </div>
                 <div>
                     <span>Time of Order Placement:</span>
@@ -174,6 +184,10 @@
             </div>
           </div>`
         };
+
+        // console.log("newOrder(data)-------");
+        // console.log(newOrder(data))
+
 
         $(".order-list").prepend(newOrder(data));
 
