@@ -34,12 +34,13 @@
 
     <div id="order-title">
       <div id="order-details-title">ORDER DETAILS</div>
-      <div id="est-time-title"><p>ESTIMATED TIME <br> TO COMPLETE</p></div>
+      <div id="est-time-title">ESTIMATED TIME TO <br> COMPLETE</div>
+      <div id="completed">COMPLETED</div>
     </div>
 
     <div class="order-list">
       <!--EMPTY DIV FOR INCOMING ORDER-->
-      <!-- <div class="one-order">
+      <div class="one-order">
         <div class="order-details">
           <p id="incoming-order-here"></p>
         </div>
@@ -48,7 +49,12 @@
           <input type="text" id="estimated-time" name="estimated-time"></input>
           <button type="submit">Submit</button>
         </div>
-      </div> -->
+
+        <div class="div-check">
+          <input type="checkbox"/>
+        </div>
+
+      </div>
 
       <!-- <div class="one-order">
         <div class="order-details">
@@ -116,8 +122,13 @@
         //appending to make the textbox for restaurant to input est. time
         $timeContainer.append($input, $button);
 
+        $inputCk = $("<input>").attr("type", "checkbox");
+        $divCk = $("<div>").addClass("div-check");
+        $divCk.append($inputCk)
+
+
         const $divOneOrder = $("<div>").addClass("one-order")
-        $divOneOrder.append($divOrderDetails, $timeContainer)
+        $divOneOrder.append($divOrderDetails, $timeContainer, $divCk)
 
         $(".order-list").prepend($divOneOrder)
 
