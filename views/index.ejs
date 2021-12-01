@@ -122,19 +122,25 @@
       console.log("index.ejs is connected ->")
     })
     socket.on("time-message", (data) => {
-      // console.log("time-message data--")
-      // console.log(data);
-      //incoming data is an object where the message is the key
-      // get key and place into an array
-      let arrKey = Object.keys(data);
-      // grab the message
-      let message = arrKey[0];
-      // console.log("MESSAGE:", message);
-      // console.log("-------------")
+      //visible on browser console only
+      console.log("REEEEEACCCCHED")
+      console.log("data passed in here on index.ejs line 125--", data)
 
-      const $h2 = $("<h2>").text(message)
-
-      $(".notification").append(message);
+      const newNotification = function(newNotificationObj) {
+        return`<div class="one-notification">
+               <div class="notification-text">
+              <span>Hello!</span>
+              <p>Your order <span>${newNotificationObj.orderId}</span> is being processed. The estimated time for pick up is in <span>${newNotificationObj.time}</span> minutes. We will notify you again once the food is ready! See you soon!</p>
+            </div>
+            <footer>
+              <button class="ok-btn">OK</button>
+            </footer>
+          </div>
+         `
+      }
+      // console.log("newNotification(data)")
+      // console.log(newNotification(data));
+      $(".notification").append(newNotification(data));
 
     })
 
