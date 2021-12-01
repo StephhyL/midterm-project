@@ -126,6 +126,11 @@
       console.log("REEEEEACCCCHED")
       console.log("data passed in here on index.ejs line 125--", data)
 
+      const okBtn = (event) => {
+        let okBtnClicked = $(event.target);
+        let notificationClicked = okBtnClicked.closest(".one-notification").remove();
+      }
+
       const newNotification = function(newNotificationObj) {
         return`<div class="one-notification">
                <div class="notification-text">
@@ -141,6 +146,11 @@
       // console.log("newNotification(data)")
       // console.log(newNotification(data));
       $(".notification").prepend(newNotification(data));
+
+      // 'activates submit button when clicked'
+      $(".one-notification").find(".ok-btn").on("click", okBtn)
+
+
 
     })
 
