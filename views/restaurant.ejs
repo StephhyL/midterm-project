@@ -140,9 +140,6 @@
             orderId: orderId,
             time: estTime,
           }
-          // console.log(prepObj);
-          // let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
-          //hard coded post request
           $.post("/login/2", prepObj);
         };
 
