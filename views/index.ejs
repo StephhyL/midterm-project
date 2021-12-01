@@ -144,26 +144,22 @@
          `
       }
 
-
-
-
-
-
-
       // console.log("newNotification(data)")
       // console.log(newNotification(data));
       $(".notification").prepend(newNotification(data));
 
       // 'activates submit button when clicked'
       $(".one-notification").find(".ok-btn").on("click", okBtn)
-
-
-
     })
 
     socket.on("orderCompleted", (data) => {
 
       console.log("orderCompleted data passed in here on index.ejs line 156--", data)
+
+      const okBtn = (event) => {
+        let okBtnClicked = $(event.target);
+        let notificationClicked = okBtnClicked.closest(".one-notification").remove();
+      }
 
       const completedNotification = function(obj) {
         return`<div class="one-notification">
