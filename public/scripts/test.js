@@ -12,7 +12,6 @@ $(() => {
       let foodName = $(this).find('.cart-food-name').text()
       let foodId = $(this).find('.cart-food-id').text();
 
-
       let quantityElement = $(this).find('.quantity').text();
       let quantity = Number(quantityElement);
       newCartObj.addCartFoods[foodName] = { id: foodId, qty: quantity }
