@@ -6,6 +6,22 @@ $(()=> {
   $("#checkout-btn").on("click", function(e){
     console.log("my god");
 
+
+    // const socket = io("http://localhost:8080");
+    // socket.on('connection');
+
+    // socket.on("message", (data) => {
+    //  $('#yes').html(data)
+    // })
+
+    // const sendMessage = () => {
+    //   // const messageInput = $('.hi')
+    //   // const message = messageInput.val();
+    //   socket.emit('message', "Hi there")
+    // }
+
+    // sendMessage();
+
     const newCartObj = {
       addCart: {},
       addCartFoods: {}
@@ -32,8 +48,18 @@ $(()=> {
     let totalPrice = Math.round(Number(totalElement.replace("$", "") * 100)); // total price in cents
     newCartObj.addCart["total_price"] = totalPrice;
     newCartObj.addCart["notes"] = $("#note").val();
-    console.log(newCartObj["addCart"]);
-    console.log(newCartObj["addCartFoods"]);
+
+
+    // console.log(newCartObj["addCart"]);
+    // console.log(newCartObj["addCartFoods"]);
+
+    cartRows.each(function(index, element) {
+      element.remove();
+    })
+    updateCartTotal();
+    $("#note").val("");
+
+
 
     //once the object is create we need to make an Ajax Call
     $.ajax({

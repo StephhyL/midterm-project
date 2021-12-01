@@ -8,23 +8,34 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const dbConnection = require('./db/connection');
+const socket_client = require('./socket-client')
 
 //server for socket.io
 const server = require('http').createServer(app);
-const io = require('socket.io')(server, {
-  cors: {
-    origin: '*'
-  }
-});
+// const {Server} = require('socket.io')
+// const io = new Server(server)
 
+const io = require("socket.io")(server, {   cors: {     origin: "*"}});
+
+
+
+// const io = (server, {
+//   cors: {
+//     origin: '*'
+//   }
+// });
+
+// require('socket.io')
 
 //Connecting to server.io; assigns a random id to anyone connected to our server
 io.on('connection', (socket) => {
   console.log("socket connected")
   console.log("socket id ---->", socket.id)
-  socket.on("message", (data) => {
+  socket.on("inputValue" , (data) => {
     console.log(data);
-    socket.broadcast.emit("message", data)
+    console.log("The above is new data received")
+    io.emit("inputValue", data)
+    // socket.to(room).emit("receive-message", message);
   })
 })
 
@@ -47,10 +58,6 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/socket', (req, res) => {
   res.render('index')
 })
-
-
-
-
 
 
 
@@ -117,6 +124,12 @@ app.use("/newcart", newCartRoutes);
 //   .then((message) => console.log(message.sid))
 //   .catch(err => console.log(err));
 
-server.listen(PORT, () => {
+server.listen(3000, ()=> {
+  console.log("This is socket port 3000")
+})
+
+socket_client();
+
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

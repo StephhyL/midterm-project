@@ -4,6 +4,16 @@ const newCartFns = require('../db/queries/new_cart_queries')
 const twilio = require('twilio'); //Twilio sms api
 const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
+const socket_client = require('../socket-client');
+
+//**SOCKET */
+// const io = require("socket.io-client");
+// const socket = io("ws://localhost:3000");
+// socket.on('connection', function() {
+//   console.log("CONNNECCCTED HERE.")
+// });
+
+
 // let createNewCart = require('../scripts/test.js')
 const retrieveFoods = (obj) => {
   let foods = '';
@@ -38,6 +48,40 @@ router.post("/", (req, res) => {
       The total is: $${(new_cart.total_in_cents) / 100}.
       Customers Notes: ${new_cart.notes}.
       `;
+
+
+
+      // socket.on("message", (data) => {
+      //  $('#yes').html(data)
+      // })
+
+
+
+      // const sendMessage = () => {
+        // const messageInput = $('.hi')
+        // const message = messageInput.val();
+      //   console.log("send message function")
+      //   socket_client().then((socket)=> {
+      //     console.log("yes, inside the socket_client")
+      //     socket.emit("inputValue", restaurantMessage)
+      //   })
+      //   // socket.emit('message', restaurantMessage)
+      // }
+
+      // sendMessage();
+
+
+      // console.log("send message function")
+      socket_client()
+      .then((socket)=> {
+        console.log("yes, inside the socket_client")
+        socket.emit("inputValue", restaurantMessage)
+      })
+      .catch((err)=> {
+        console.log("yeah, an error :(")
+        console.log(err.message)
+      })
+
       // client.messages
       //   .create({
       //     body: customerMessage,
