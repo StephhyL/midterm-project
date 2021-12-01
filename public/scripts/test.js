@@ -1,34 +1,7 @@
-<<<<<<< HEAD
-
-
-$(()=> {
-  alert("Hello");
-
-  $("#checkout-btn").on("click", function(e){
-    console.log("my god");
-
-
-    // const socket = io("http://localhost:8080");
-    // socket.on('connection');
-
-    // socket.on("message", (data) => {
-    //  $('#yes').html(data)
-    // })
-
-    // const sendMessage = () => {
-    //   // const messageInput = $('.hi')
-    //   // const message = messageInput.val();
-    //   socket.emit('message', "Hi there")
-    // }
-
-    // sendMessage();
-
-=======
 $(() => {
   alert("Hello");
 
   $("#checkout-btn").on("click", function(e) {
->>>>>>> master
     const newCartObj = {
       addCart: {},
       addCartFoods: {}

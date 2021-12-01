@@ -26,15 +26,6 @@ const retrieveFoods = (obj) => {
 
 router.post("/", (req, res) => {
   let temp = req.body;
-<<<<<<< HEAD
-  console.log("req.body---->", temp);
-  // console.log(client);
-
-  newCartFns.getNewCart(req.body.addCart)
-    .then((new_cart) => {
-      console.log("new_cart--->", new_cart)
-      newCartFns.addFoodToCart(req.body.addCartFoods, new_cart)
-=======
 
   console.log('this is post', temp);
   newCartFns.ultimateFoodInsert(temp).then(resp => {
@@ -43,7 +34,6 @@ router.post("/", (req, res) => {
   })
     .then((data) => {
       console.log(data)
->>>>>>> master
       let customerMessage = `
     Thank you for placing an order with our restaurant.
     Your confirmation number is ${data.id}.
@@ -53,7 +43,6 @@ router.post("/", (req, res) => {
     Your notes are: ${data.notes}.
     `;
       let restaurantMessage = `
-<<<<<<< HEAD
       An order was placed by customer id: ${req.body.addCart['user_id']}
       The order number is ${new_cart.id}.
       The order includes the following items:
@@ -113,17 +102,6 @@ router.post("/", (req, res) => {
       //   .catch(err => console.log(err));
       // res.send(new_cart)
       // res.render('message');
-=======
-    An order was placed by customer id: ${req.body.addCart['user_id']}
-    The order number is ${data.id}.
-    The order includes the following items:
-    ${retrieveFoods(temp.addCartFoods)}
-    The total is: $${(data.total_in_cents) / 100}.
-    Customers Notes: ${data.notes}.
-    `;
-      console.log(customerMessage, restaurantMessage);
-
->>>>>>> master
     })
     .catch(err => res.send('error: ', err))
 });
