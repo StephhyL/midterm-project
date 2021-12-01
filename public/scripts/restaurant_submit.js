@@ -1,14 +1,34 @@
 $(()=> {
 
-  $("#submit-btn").on("click", function(e) {
-    const estTime = $("#estimated-time").val();
-    console.log(estTime);
-    const estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
+  const submitBtns = $(".submit-btn");
+  console.log("submitBtns[0]---->", $(submitBtns[0]));
 
-    console.log("estTimeMessage---->",estTimeMessage);
+  for (let i=0; i < submitBtns.length; i++) {
+    let button = submitBtns[i];
+    button.addEventListener("click", function() {
+      let estTime = $($(button)).closest(".time-container").find(".estimated-time").val();
 
-    $.post("/login/2", estTimeMessage);
+      const estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
 
-  })
+      //hard coded post request
+      $.post("/login/2", estTimeMessage);
+
+    })
+
+  }
+
+
+  // FOR SINGLE UNQUIE BUTTON
+  // $(".submit-btn").on("click", function(e) {
+
+  //   const estTime = $("#estimated-time").val();
+  //   console.log(estTime);
+  //   const estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
+
+  //   console.log("estTimeMessage---->",estTimeMessage);
+
+  //   $.post("/login/2", estTimeMessage);
+
+  // })
 
 })
