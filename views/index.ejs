@@ -156,9 +156,9 @@
 
       console.log("orderCompleted data passed in here on index.ejs line 156--", data)
 
-      const okBtn = (event) => {
-        let okBtnClicked = $(event.target);
-        let notificationClicked = okBtnClicked.closest(".one-notification").remove();
+      const completedBtn = (event) => {
+        let completedBtnClicked = $(event.target);
+        let completedNotificationClicked = completedBtnClicked.closest(".one-notification").remove();
       }
 
       const completedNotification = function(obj) {
@@ -175,6 +175,7 @@
       }
 
       $(".notification").prepend(completedNotification(data));
+      $(".one-notification").find(".ok-btn").on("click", completedBtn)
     });
 
   </script>
