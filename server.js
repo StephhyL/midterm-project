@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on("time-message", (data)=> {
-    console.log("reached the server.js socket for the customer notification:");
+    console.log("reached the server.js socket for restaurant to customer notification for est time:");
     console.log(data);
     io.emit("time-message", data)
   })
