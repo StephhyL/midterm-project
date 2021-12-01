@@ -26,7 +26,6 @@
     font-weight: bold;
     border-bottom: darkblue 2px solid;
     background-color: peachpuff;
-    padding-right: 1.5rem;
     #order-details-title {
       // border: gold 3px solid;
       width: 60%;
@@ -36,7 +35,11 @@
       // border: springgreen 3px solid;
       text-align: center;
       font-size: 1rem;
-      margin-right: 3rem;
+      width: 20%;
+    }
+    #completed {
+      width: 20%;
+      text-align: center;
     }
   }
   .order-list {
