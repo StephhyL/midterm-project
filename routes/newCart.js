@@ -53,6 +53,7 @@ router.post("/", (req, res) => {
 
       const orderObj = {
         customerId : temp.addCart['user_id'],
+        cartId: data.id,
         time: data.submitted_time,
         listOfFoods: retrieveFoods(temp.addCartFoods),
         notes: data.notes,
