@@ -49,8 +49,6 @@ const addFoodToCart = (object1, object2) => {
 }
 
 
-<<<<<<< HEAD
-=======
 
 
 const ultimateFoodInsert = function(obj1) {
@@ -76,7 +74,6 @@ INSERT INTO cart_foods(cart_id, food_id, qty_food)
     console.log(res.rows[0])
     return res.rows[0];
   });
->>>>>>> 96d5416426f653de0621f4451faff486fc72bb0f
 }
 
 const getCartById = function(cart_id) {
