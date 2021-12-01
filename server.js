@@ -32,14 +32,14 @@ io.on('connection', (socket) => {
   console.log("socket connected")
   console.log("socket id ---->", socket.id)
   socket.on("inputValue" , (data) => {
+    console.log("The data below is received from server.js line 35->")
     console.log(data);
-    console.log("The above is new data received")
     io.emit("inputValue", data)
     // socket.to(room).emit("receive-message", message);
   })
 
   socket.on("time-message", (data)=> {
-    console.log("TIME MESSAGE HERE:");
+    console.log("reached the server.js socket for the customer notification:");
     console.log(data);
     io.emit("time-message", data)
   })
