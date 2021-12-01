@@ -27,13 +27,12 @@ const retrieveFoods = (obj) => {
 router.post("/", (req, res) => {
   let temp = req.body;
 
-  console.log('this is post', temp);
   newCartFns.ultimateFoodInsert(temp).then(resp => {
     return newCartFns.getCartById(resp.cart_id)
 
   })
     .then((data) => {
-      console.log(data)
+      // console.log(data)
       let customerMessage = `
     Thank you for placing an order with our restaurant.
     Your confirmation number is ${data.id}.
@@ -73,7 +72,7 @@ router.post("/", (req, res) => {
       // console.log("send message function")
       socket_client()
       .then((socket)=> {
-        console.log("yes, inside the socket_client")
+        console.log("Inside socket in newCart line 76 ->")
         socket.emit("inputValue", restaurantMessage)
       })
       .catch((err)=> {
