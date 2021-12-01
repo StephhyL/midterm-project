@@ -1,6 +1,4 @@
 $(() => {
-  alert("Hello");
-
   $("#checkout-btn").on("click", function(e) {
     const newCartObj = {
       addCart: {},

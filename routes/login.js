@@ -37,18 +37,35 @@ router.get("/:id", (req, res) => {
     })
 });
 
+router.post('/completed/:id', (req, res) => {
+  const response = req.body;
+
+
+})
+
 router.post("/:id", (req, res) => {
-  // req.body = {time: '90'}
- let timeObj = req.body;
- console.log('timeObj in /login/:id', timeObj);
-  socket_client()
-    .then((socket)=> {
-      socket.emit("time-message", timeObj)
-    })
-    .catch((err)=> {
+  const response = { time: helperFns.minutesFromRestaurant(req.body.time), cartId: req.body.cartId };
+  const timeObj = {
+    cartId: req.body.cartId,
+    time:req.body.time
+  };
+
+  console.log("timeOBj------", timeObj);
+  console.log('login.js line 41 received from newCart ejs', req.body)
+
+  userFns.updateTime(response)
+    .then(data => {
+      socket_client()
+        .then((socket) => {
+          socket.emit("time-message", timeObj)
+          return
+          //console.log(`Twilio sends text to client of time it will take to fulfill order + browser refreshes for user`, estTimeMessage, `this is the data received from the update ${data}`)
+        })
+    }).catch((err) => {
       console.log("yeah, an error :(")
       console.log(err.message)
     })
+
 })
 
 

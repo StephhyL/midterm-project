@@ -52,8 +52,8 @@ router.post("/", (req, res) => {
 
 
       const orderObj = {
-        customerId : temp.addCart['user_id'],
         cartId: data.id,
+        customerId: temp.addCart['user_id'],
         time: data.submitted_time,
         listOfFoods: retrieveFoods(temp.addCartFoods),
         notes: data.notes,
@@ -65,8 +65,8 @@ router.post("/", (req, res) => {
       // })
 
       // const sendMessage = () => {
-        // const messageInput = $('.hi')
-        // const message = messageInput.val();
+      // const messageInput = $('.hi')
+      // const message = messageInput.val();
       //   console.log("send message function")
       //   socket_client().then((socket)=> {
       //     console.log("yes, inside the socket_client")
@@ -80,14 +80,14 @@ router.post("/", (req, res) => {
 
       // console.log("send message function")
       socket_client()
-      .then((socket)=> {
-        console.log("Inside socket in newCart line 76 ->")
-        socket.emit("inputValue", orderObj)
-      })
-      .catch((err)=> {
-        console.log("yeah, an error :(")
-        console.log(err.message)
-      })
+        .then((socket) => {
+          console.log("Inside socket in newCart line 76 ->")
+          socket.emit("inputValue", orderObj)
+        })
+        .catch((err) => {
+          console.log("yeah, an error :(")
+          console.log(err.message)
+        })
 
       // client.messages
       //   .create({
