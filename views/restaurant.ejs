@@ -19,7 +19,9 @@
 
   <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <!--SOCKET.IO-->
+
+  <!-- RESTAURANT SUBMIT BUTTON JS -->
+  <script type="text/javascript" src="/scripts/restaurant_submit.js"></script>
 
 </head>
 <body>
@@ -34,7 +36,7 @@
 
     <div id="order-title">
       <div id="order-details-title">ORDER DETAILS</div>
-      <div id="est-time-title">ESTIMATED <br> TIME TO COMPLETE</div>
+      <div id="est-time-title">ESTIMATED <br> TIME TO COMPLETE <br> (MINUTES)</div>
       <div id="completed">COMPLETED</div>
     </div>
 
@@ -47,7 +49,7 @@
 
         <div class="time-container">
           <input type="text" id="estimated-time" name="estimated-time"></input>
-          <button type="submit">Submit</button>
+          <button type="submit" id="submit-btn">Submit</button>
         </div>
 
         <div class="div-check">
@@ -117,7 +119,7 @@
         $divOrderDetails.append($pData);
 
         const $input = $("<input>").attr("type", "text").attr("name", "estimated-time").attr("id", "estimated-time");
-        const $button = $("<button>").attr("type", "submit").text("Submit");
+        const $button = $("<button>").attr("type", "submit").attr("id", "submit-btn").text("Submit");
         const $timeContainer = $("<div>").addClass("time-container");
         //appending to make the textbox for restaurant to input est. time
         $timeContainer.append($input, $button);
