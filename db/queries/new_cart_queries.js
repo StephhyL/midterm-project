@@ -3,7 +3,7 @@ const connection = require('../connection');
 
 const getNewCart = (object) => {
   const queryString =
-  `
+    `
   INSERT INTO carts(user_id, total_in_cents, notes)
   VALUES ($1, $2, $3)
   RETURNING *
@@ -13,72 +13,89 @@ const getNewCart = (object) => {
 
   return connection.query(queryString, values)
     .then(res => {
-      //console.log(res.rows);
       return res.rows[0];
     })
-    .catch((err)=> {
+    .catch((err) => {
       console.log("OH NO ERROR")
       console.log(err.message)
       return err.message;
     })
 }
 
-/*
-req.body.addCartFoods = {
-  pizza: 1,
-  yogurt: 2
-}
-*/
+
 
 
 const addFoodToCart = (object1, object2) => {
-
-  console.log("object2---->", object2)
+  let value = [object2.id, object1.id, object1.qty]
   const queryString =
-  `
+    `
     INSERT INTO cart_foods(cart_id, food_id, qty_food)
     VALUES
     ($1, $2, $3)
   `;
-  for (let foods in object1) {
-    const values = [object2.id,object1[foods].id, object1[foods].qty]
-    connection.query(queryString, values)
+  return connection.query(queryString, value).then(res => {
+    console.log(res.rows)
+    return res.rows;
+  });
+
+  /*  for (let foods in object1) {
+     const values = [object2.id, object1[foods].id, object1[foods].qty]
+     return connection.query(queryString, values).then(res => res.rows[0]).catch((err) => {
+       console.log("OH NO ERROR")
+       console.log(err.message)
+       return err.message;
+     })
+   } */
+}
+
+
+<<<<<<< HEAD
+=======
+
+
+const ultimateFoodInsert = function(obj1) {
+  let string = `WITH ins1 as ( INSERT INTO carts(user_id, total_in_cents, notes)
+VALUES ($1, $2, $3) RETURNING id)
+INSERT INTO cart_foods(cart_id, food_id, qty_food)
+    VALUES`
+
+
+  const arry = [obj1.addCart.user_id, obj1.addCart.total_price, obj1.addCart.notes]
+  for (let food in obj1.addCartFoods) {
+    arry.push(obj1.addCartFoods[food].id)
+    arry.push(obj1.addCartFoods[food].qty)
   }
-  /* addCartFoods = {
-    Schnitzel: { id: '10', qty: '2' },
-    Yogurt: { id: '9', qty: '1' }
-  } */
+  const valueArr = [];
+  for (let i = 0; i < (arry.length - 3) / 2; i++) {
+    valueArr.push(`((SELECT id FROM ins1), $${i + 4 + i}, $${i + 5 + i})`);
+  }
+  const parameterizedValues = valueArr.join(',');
+  string += parameterizedValues + 'RETURNING cart_id;';
+  console.log(string);
+  return connection.query(string, arry).then(res => {
+    console.log(res.rows[0])
+    return res.rows[0];
+  });
+>>>>>>> 96d5416426f653de0621f4451faff486fc72bb0f
+}
 
-  // $1 - CART ID
-  // for foods in object 1
-  /* .id */
-  // $2 - FOOD ID
-  /// object1.id
-  // $3 - QTY_ID
-  // object 2.qty
-
+const getCartById = function(cart_id) {
+  return connection.query(`Select * from carts where id = ${cart_id}`)
+    .then((final) => final.rows[0]);
 }
 
 
 
+module.exports = { getNewCart, addFoodToCart, ultimateFoodInsert, getCartById }
 
 
-module.exports = { getNewCart, addFoodToCart }
+/* let arry = [1, 2, 3, 4, 5,6]
+for (let food in obj) {
 
+}
+for (let i = 0; i < (arry.length-3)/2; i++) {
+ console.log(`(select id ins1), ${i+4}, ${i+5}`)
+}
 
-
-
-// const getNewCart = () => {
-//   return connection.query(`SELECT * FROM food_items;`)
-//     .then(data => {
-//       return data.rows;
-
-//     })
-//     .catch(err => {
-//       console.error(err.message);
-//       return err.message;
-//     });
-// };
-
-
+ */
 

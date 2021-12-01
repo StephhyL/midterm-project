@@ -19,22 +19,20 @@ router.post('/', (req, res) => {
 })
 
 router.get("/:id", (req, res) => {
-  userFns.getUserById(req.params.id)//r return either rows or error
+  userFns.getUserById(req.params.id)
     .then((user) => {
-      console.log('admin???????????????', helperFns.adminOrCustomer(user.id), user.id)
       if (!helperFns.adminOrCustomer(user.id)) {
-        console.log('we are here--------', user.id)
         homeFns.getHome()
           .then((food_items) => {
             return res.render('index', { user, food_items });
           })
+      } else {
+        restaurantFns.getNewestOrder()
+          .then((carts) => {
+            const templateVars = { carts, user }
+            return res.render('restaurant', templateVars)
+          })
       }
-
-      restaurantFns.getNewestOrder()
-        .then((carts) => {
-          const templateVars = { carts, user }
-          return res.render('restaurant', templateVars)
-        })
     })
 });
 
