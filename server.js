@@ -29,10 +29,10 @@ const io = require("socket.io")(server, {   cors: {     origin: "*"}});
 
 //Connecting to server.io; assigns a random id to anyone connected to our server
 io.on('connection', (socket) => {
-  console.log("socket connected")
-  console.log("socket id ---->", socket.id)
+  console.log("new socket connection made (server.js)")
+  console.log("socket id (server.js file) ---->", socket.id)
   socket.on("inputValue" , (data) => {
-    console.log("The data below is received from server.js line 35->")
+    console.log("The data below is received from server.js line 35 (customer to restaurant)->")
     console.log(data);
     io.emit("inputValue", data)
     // socket.to(room).emit("receive-message", message);
@@ -43,7 +43,6 @@ io.on('connection', (socket) => {
     console.log(data);
     io.emit("time-message", data)
   })
-
 
 })
 

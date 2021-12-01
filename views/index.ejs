@@ -32,70 +32,72 @@
   <div class="notification">
   </div>
 
+  <div class="menu-cart">
 
-  <main class="container">
-    <h1>Our Menu:</h1>
+    <main class="container">
+      <h1>Our Menu:</h1>
 
-    <% for (let food_item of food_items) {%>
-      <div class="card mb-3">
-        <div class="row foodEntity">
-          <div class="col-4">
-            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="" class="img-fluid foodImage">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h4 class="card-title foodName"><%= food_item.name %></h4>
-              <h4 style="display:none" class="foodId" ><%= food_item.id %></h4>
-              <p class="card-text"><%= food_item.description %></p>
-              <h4 class="card-text text-end font-italic price">$<%= food_item.price_in_cents / 100 %></h4>
-              <div>
-                <button class="add-btn">Add to Cart</button>
+      <% for (let food_item of food_items) {%>
+        <div class="card mb-3">
+          <div class="row foodEntity">
+            <div class="col-4">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="" class="img-fluid foodImage">
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h4 class="card-title foodName"><%= food_item.name %></h4>
+                <h4 style="display:none" class="foodId" ><%= food_item.id %></h4>
+                <p class="card-text"><%= food_item.description %></p>
+                <h4 class="card-text text-end font-italic price">$<%= food_item.price_in_cents / 100 %></h4>
+                <div>
+                  <button class="add-btn">Add to Cart</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    <% } %>
-  </main>
+        <% } %>
+      </main>
 
-  <aside class="cart">
-    <h3 id="cart-header">My Cart</h3>
+      <aside class="cart">
+        <h3 id="cart-header">My Cart</h3>
 
-    <div class="cart-title">
-      <h4>Item</h4>
-      <h4>Price Per Item</h4>
-      <h4>Quantity</h4>
-    </div>
+        <div class="cart-title">
+          <span>Item</span>
+          <span>Price Per Item</span>
+          <span>Quantity</span>
+        </div>
 
-    <!--CART LIST ROWS-->
-    <div id="cartList">
-    </div>
+        <!--CART LIST ROWS-->
+        <div id="cartList">
+        </div>
 
-    <!--SUBTOTAL, TAX, TOTAL-->
-    <div class="math">
-      <div>
-        <span>Subtotal:</span>
-        <span id="subtotal">$0</span>
+        <!--SUBTOTAL, TAX, TOTAL-->
+        <div class="math">
+          <div>
+            <span class="bold">Subtotal:</span>
+            <span id="subtotal">$0</span>
+          </div>
+          <div>
+            <span class="bold">Tax (HST 13%): </span>
+            <span id="tax">$0</span>
+          </div>
+          <div>
+            <span class="bold">Total: </span>
+            <span id="total">$0</span>
+          </div>
+        </div>
+        <div class="note-checkout">
+          <div class="note"><span>Add Note:</span>
+            <form>
+              <textarea id="note" name="note"></textarea>
+            </form>
+          </div>
+          <div class="checkout">
+            <button id="checkout-btn">Checkout</button>
+          </div>
+        </div>
       </div>
-      <div>
-        <span>Tax (HST 13%): </span>
-        <span id="tax">$0</span>
-      </div>
-      <div>
-        <span>Total: </span>
-        <span id="total">$0</span>
-      </div>
-    </div>
-    <div>
-      <div><h5>Add Note:</h5></div>
-      <form>
-        <textarea id="note" name="note"></textarea>
-      </form>
-    </div>
-      <div>
-        <button id="checkout-btn">Checkout</button>
-      </div>
-
   </aside>
 
   <!--BOOTSTRAP-->

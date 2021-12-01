@@ -15,11 +15,15 @@ body {
     rgba(163, 208, 219, 1) 100%
   );
 
+  .menu-cart {
+    display:flex;
+  }
+
   main.container {
+    width: 60%;
+  }
+  .add-btn {
     width: 100%;
   }
 }
 
-.add-btn {
-  width: 100%;
-}

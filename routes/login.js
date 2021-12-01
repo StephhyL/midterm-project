@@ -42,6 +42,7 @@ router.post("/:id", (req, res) => {
   socket_client()
     .then((socket)=> {
       let customerNotificationMessage = req.body;
+      // console.log(customerNotificationMessage, "customerNotificationMessage")
       console.log("reached socket in POST of /login/:d in login js--->")
       socket.emit("time-message", customerNotificationMessage)
     })

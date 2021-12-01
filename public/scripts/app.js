@@ -47,14 +47,14 @@ const addRow = (title, food_id, image, price) => {
     }
   }
 
-  const $pTitle = $("<p>").addClass("cart-food-name").text(title);
+  const $pTitle = $("<p>").addClass("cart-food-name").addClass("cart-row-font").text(title);
   const $pFoodId = $("<p>").addClass("cart-food-id").text(food_id)
   const $p = $("<p>").text(image);
   const $divCartItem = $("<div>").addClass("cart-item");
   // appending food name and img into a div
   $divCartItem.append($pTitle, $pFoodId, $p);
 
-  const $pPrice = $("<p>").addClass("item-price").text(price);
+  const $pPrice = $("<p>").addClass("item-price").addClass("cart-row-font").text(price);
 
   const $minusBtn = $("<button>").addClass("minus-btn").text("-");
   const $pQty = $("<p>").addClass("quantity").text(1);

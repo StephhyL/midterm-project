@@ -10,7 +10,7 @@ module.exports = function() {
     if (!isConnected) {
       socket.on('connect', function() {
         isConnected = true;
-        console.log("CONNNECCCTED HERE.")
+        console.log("Connected in socket-client.js")
         resolve(socket);
       });
     } else {

@@ -55,43 +55,44 @@
 
       .order-details {
         display: flex;
+        flex-direction: column;
         border: 3px solid yellow;
         width:60%;
       }
-        // .user-details {
-        //   border: tomato 3px solid;
-        //   display: flex;
-        //   flex-direction: row;
-        //   justify-content: space-between;
-        //   align-items: center;
-        //   padding-right: 1.5rem;
-        //   padding-left: 1.5rem;
-        //   div {
-        //     display: flex;
-        //   }
-        //   span {
-        //     font-weight: bold;
-        //     margin-right: 1rem;
-        //   }
-        // }
+    .user-details {
+      border: tomato 3px solid;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+      div {
+        display: flex;
+      }
+      span {
+        font-weight: bold;
+        margin-right: 1rem;
+      }
+    }
 
-        // .food-details {
-        //   border: springgreen 3px solid;
-        //   span {
-        //     font-weight: bold;
-      //     }
-      //   }
+    .food-details {
+      border: springgreen 3px solid;
+      span {
+        font-weight: bold;
+      }
+    }
 
-      //   .note-details {
-      //     border: orange 3px solid;
-      //     span {
-      //       font-weight: bold;
-      //     }
-      //     p {
-      //       background-color: yellow;
-      //     }
-      //   }
-      // }
+    .note-details {
+      border: orange 3px solid;
+      span {
+        font-weight: bold;
+      }
+      p {
+        background-color: yellow;
+      }
+    }
+  }
 
 
       .time-container {
@@ -137,5 +138,5 @@
     margin-top: 2rem;
   }
 
-  }
 }
+
