@@ -4,6 +4,7 @@ const userFns = require('../db/queries/users_queries');
 const homeFns = require('../db/queries/home_queries');
 const helperFns = require('../public/scripts/helper');
 const restaurantFns = require('../db/queries/restaurant_queries');
+const socket_client = require('../socket-client');
 
 
 router.post('/', (req, res) => {
@@ -36,6 +37,18 @@ router.get("/:id", (req, res) => {
     })
 });
 
+router.post("/:id", (req, res) => {
+  console.log("req.body", req.body)
+  socket_client()
+    .then((socket)=> {
+      console.log("here, ye, here, ye")
+      socket.emit("time-message", req.body)
+    })
+    .catch((err)=> {
+      console.log("yeah, an error :(")
+      console.log(err.message)
+    })
+})
 
 
 module.exports = router;
