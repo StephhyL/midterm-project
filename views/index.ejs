@@ -33,28 +33,8 @@
   <%- include('./partials/_nav'); %>
   <main class="container">
     <h1>Our Menu:</h1>
-<!--*************************-->
-    <textarea type="text" class="hi"></textarea>
-    <button id="send">Send Message</button>
 
     <h2 id="yes"></h2>
-    <!-- <script>
-
-      const socket = io("http://localhost:8080");
-      socket.on('connection')
-
-      socket.on("message", (data) => {
-        document.querySelector('h2').innerHTML = data;
-      })
-      const sendMessage = () => {
-        const messageInput = document.querySelector('.hi')
-        const message = messageInput.value
-        socket.emit('message', message)
-      }
-    </script> -->
-
-
-
 
     <% for (let food_item of food_items) {%>
       <div class="card mb-3">
