@@ -43,7 +43,7 @@ router.post("/", (req, res) => {
     Your notes are: ${data.notes}.
     `;
       let restaurantMessage = `
-      An order was placed by customer id: ${req.body.addCart['user_id']}
+      An order was placed by customer id: ${req.body.addCart['user_id']}.
       The order number is ${data.id}.
       The order includes the following items:
       ${retrieveFoods(req.body.addCartFoods)}
@@ -51,6 +51,7 @@ router.post("/", (req, res) => {
       Customers Notes: ${data.notes}.
       `;
 
+      console.log("restaurant Message --->", restaurantMessage)
       // socket.on("message", (data) => {
       //  $('#yes').html(data)
       // })
