@@ -44,20 +44,16 @@ router.post("/", (req, res) => {
     `;
       let restaurantMessage = `
       An order was placed by customer id: ${req.body.addCart['user_id']}
-      The order number is ${new_cart.id}.
+      The order number is ${data.id}.
       The order includes the following items:
       ${retrieveFoods(req.body.addCartFoods)}
-      The total is: $${(new_cart.total_in_cents) / 100}.
-      Customers Notes: ${new_cart.notes}.
+      The total is: $${(data.total_in_cents) / 100}.
+      Customers Notes: ${data.notes}.
       `;
-
-
 
       // socket.on("message", (data) => {
       //  $('#yes').html(data)
       // })
-
-
 
       // const sendMessage = () => {
         // const messageInput = $('.hi')
@@ -103,7 +99,7 @@ router.post("/", (req, res) => {
       // res.send(new_cart)
       // res.render('message');
     })
-    .catch(err => res.send('error: ', err))
+    .catch(err => console.log(err.message))
 });
 
 
