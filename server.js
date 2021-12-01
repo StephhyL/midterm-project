@@ -37,6 +37,14 @@ io.on('connection', (socket) => {
     io.emit("inputValue", data)
     // socket.to(room).emit("receive-message", message);
   })
+
+  socket.on("time-message", (data)=> {
+    console.log("TIME MESSAGE HERE:");
+    console.log(data);
+    io.emit("time-message", data)
+  })
+
+
 })
 
 const twilio = require('twilio'); //Twilio sms api
