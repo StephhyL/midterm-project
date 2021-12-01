@@ -21,7 +21,7 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <!-- RESTAURANT SUBMIT BUTTON JS -->
-  <script type="text/javascript" src="/scripts/restaurant_submit.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/restaurant_submit.js"></script> -->
 
 </head>
 <body>
@@ -116,7 +116,20 @@
         console.log("restaurant.ejs is connected")
       })
       socket.on("inputValue", (data) => {
+
+
         // console.log("Reached restaurant ejs line 117-- >", data)
+        console.log("data in restaurant.ejs socket -----")
+        console.log(data);
+
+        //SUBMIT BUTTON THAT TRIGGERS AJAX POST REQUEST
+        const submitTime = (event) => {
+          let submitBtnClicked = $(event.target);
+          let estTime = submitBtnClicked.closest(".time-container").find(".estimated-time").val();
+          let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
+          //hard coded post request
+          $.post("/login/2", estTimeMessage);
+        };
 
         const $pData = $("<p>").addClass(".incoming-order-here").text(data);
         const $divOrderDetails = $("<div>").addClass("order-details");
@@ -143,6 +156,11 @@
         $divOneOrder.append($divOrderDetails, $timeContainer, $divCk)
 
         $(".order-list").prepend($divOneOrder);
+
+
+        // 'activates submit button when clicked'
+        $divOneOrder.find(".submit-btn").on("click", submitTime)
+
 
         // $("#incoming-order-here").text(data);
 
