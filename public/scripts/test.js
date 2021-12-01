@@ -22,6 +22,8 @@ $(() => {
     let totalPrice = Math.round(Number(totalElement.replace("$", "") * 100)); // total price in cents
     newCartObj.addCart["total_price"] = totalPrice;
     newCartObj.addCart["notes"] = $("#note").val();
+    let variable = $("#note")
+    console.log("LOOK HERE TEST.JS LINE 25--->", variable)
 
 
     // console.log(newCartObj["addCart"]);
