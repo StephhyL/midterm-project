@@ -124,8 +124,7 @@
         //data is now that OBJECT from newCart.js ********
 
         // console.log("Reached restaurant ejs line 117-- >", data)
-        console.log("data in restaurant.ejs socket -----")
-        console.log(data);
+
 
         //SUBMIT BUTTON THAT TRIGGERS AJAX POST REQUEST
         const submitTime = (event) => {
@@ -168,7 +167,7 @@
             <button type="submit" class="submit-btn"> Submit</button>
           </div>
           <div class="div-check">
-              <input type="checkbox"/>
+              <input class="checkbox-btn"type="checkbox"/>
           </div>
         </div>`
       };
@@ -181,6 +180,20 @@
 
         // 'activates submit button when clicked'
        $(".one-order").find(".submit-btn").on("click", submitTime)
+
+
+
+
+       //SUBMIT BUTTON THAT TRIGGERS AJAX POST REQUEST
+       const completedOrder = (event) => {
+          let checkboxClicked = $(event.target).css("background-color", "red");
+          /* checkboxBtnClicked.css("background-color", "red"); */
+           console.log('Comes from restaruant.ejs when clicked checkbox ',data);
+          $.post(`/login/completed/${data.customerId}`, {userId:data.customerId, cartId: data.cartId});
+        };
+
+      //  Chebox completed sends message.
+       $(".one-order").find(".checkbox-btn").on("click", completedOrder)
 
 
 
