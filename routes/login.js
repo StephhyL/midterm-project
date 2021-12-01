@@ -39,15 +39,11 @@ router.get("/:id", (req, res) => {
 
 router.post("/:id", (req, res) => {
   // req.body = {time: '90'}
-  // console.log("req.body", req.body)
+ let timeObj = req.body;
+ console.log('timeObj in /login/:id', timeObj);
   socket_client()
     .then((socket)=> {
-      let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
-
-
-
-      console.log("reached socket in POST of /login/:d in login js--->")
-      socket.emit("time-message", estTimeMessage)
+      socket.emit("time-message", timeObj)
     })
     .catch((err)=> {
       console.log("yeah, an error :(")
