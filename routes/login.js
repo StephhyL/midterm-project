@@ -37,22 +37,30 @@ router.get("/:id", (req, res) => {
     })
 });
 
+router.post('/completed/:id', (req, res) => {
+  const response = req.body;
+
+
+})
+
 router.post("/:id", (req, res) => {
-  // req.body = {time: '90'}
-  // console.log("req.body", req.body)
-  socket_client()
-    .then((socket)=> {
-      let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
-
-
-
-      console.log("reached socket in POST of /login/:d in login js--->")
-      socket.emit("time-message", estTimeMessage)
-    })
-    .catch((err)=> {
+  const response = { time: helperFns.minutesFromRestaurant(req.body.time), cartId: req.body.cartId };
+  const estTime = req.body.time;
+  console.log('login.js line 41 received from newCart ejs', req.body)
+  let estTimeMessage = `Your order is estimated to be ready in ${estTime} minutes. We will notify you again when the order is actually ready! Stay tuned!`
+  userFns.updateTime(response)
+    .then(data => {
+      socket_client()
+        .then((socket) => {
+          socket.emit("time-message", estTimeMessage)
+          return console.log(`Twilio sends text to client of time it will take to fulfill order + browser refreshes for user`, estTimeMessage, `this is the data received from the update ${data}`)
+        })
+    }).catch((err) => {
       console.log("yeah, an error :(")
       console.log(err.message)
     })
+
+
 })
 
 

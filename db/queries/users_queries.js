@@ -30,4 +30,19 @@ const getUserByName = (user) => {
   return connection.query(`SELECT * FROM users WHERE name = $1;`, value)
     .then(data => { return data });
 }
-module.exports = { getUsers, getUserById, getUserByName }
+
+const updateTime = (timeAndCartId) => {
+  const value = [timeAndCartId.time, timeAndCartId.cartId];
+  return connection.query(`UPDATE carts
+  SET duration_in_seconds = $1
+  WHERE id = $2 RETURNING *;`, value)
+    .then(data => data.rows)
+    .catch(err => {
+      console.error(err.message);
+      return err.message;
+    });
+}
+
+
+
+module.exports = { getUsers, getUserById, getUserByName, updateTime }
