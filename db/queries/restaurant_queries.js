@@ -3,7 +3,7 @@ const connection = require('../connection');
 const getAllCartItems = () => {
 
   const queryString =
-  `
+    `
   SELECT *
   FROM carts
   ORDER BY submitted_time DESC
@@ -23,7 +23,7 @@ const getAllCartItems = () => {
 const getNewestOrder = () => {
 
   const queryString =
-  `
+    `
   SELECT user_id, submitted_time, notes
   FROM carts
   ORDER BY submitted_time
@@ -31,16 +31,12 @@ const getNewestOrder = () => {
   `
   return connection.query(queryString)
     .then(data => {
-      console.log("data.rows", data.rows)
       return data.rows;
     })
     .catch(err => {
       console.error(err.message);
       return err.message;
     })
-
-
-
 }
 
 

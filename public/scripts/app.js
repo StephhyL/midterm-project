@@ -3,7 +3,7 @@
 //Can only get access to 'addButtons' once the page has loaded
 $(() => {
   const addButtons = $(".add-btn")
-  for (let i=0; i < addButtons.length; i++) {
+  for (let i = 0; i < addButtons.length; i++) {
     let button = addButtons[i];
     button.addEventListener("click", addCartItem)
   }
@@ -25,34 +25,18 @@ const updateCartTotal = () => {
   // updating the prices
   $("#subtotal").text(`$${subtotal}`);
   $("#tax").text(`$${Math.round(subtotal * 0.13) * 100 / 100}`);
-  $("#total").text(`$${Math.round((subtotal * 1.13) * 100)/ 100}`);
+  $("#total").text(`$${Math.round((subtotal * 1.13) * 100) / 100}`);
 
 };
 
-// //current qty of this item in the cart
-// let curQty = Number(newRow.find(".quantity").text());
-// // console.log("curQty", curQty);
-// // console.log("typeof", typeof curQty)
-// newRow.find(".minus-btn").on("click", function() {
-//   if (curQty > 0) {
-//     curQty--;
-//     newRow.find(".quantity").text(curQty);
-//   }
-//   updateCartTotal();
-// })
-// newRow.find(".plus-btn").on("click", function() {
-//   curQty++;
-//   newRow.find(".quantity").text(curQty);
-//   updateCartTotal();
-// })
 
 
 /************CREATE ROW DETAILS */
 const addRow = (title, food_id, image, price) => {
 
   const cartFoodNames = $(".cart-food-name")
-  for (let i=0; i<cartFoodNames.length; i++) {
-    if(cartFoodNames[i].innerText === title) {
+  for (let i = 0; i < cartFoodNames.length; i++) {
+    if (cartFoodNames[i].innerText === title) {
       alert("Item already added to cart");
       return;
     }
@@ -63,7 +47,7 @@ const addRow = (title, food_id, image, price) => {
   const $p = $("<p>").text(image);
   const $divCartItem = $("<div>").addClass("cart-item");
   // appending food name and img into a div
-  $divCartItem.append($pTitle,$pFoodId, $p);
+  $divCartItem.append($pTitle, $pFoodId, $p);
 
   const $pPrice = $("<p>").addClass("item-price").text(price);
 
@@ -94,8 +78,6 @@ const addRow = (title, food_id, image, price) => {
 
   //current qty of this item in the cart
   let curQty = Number(newRow.find(".quantity").text());
-  // console.log("curQty", curQty);
-  // console.log("typeof", typeof curQty)
   newRow.find(".minus-btn").on("click", function() {
     if (curQty > 0) {
       curQty--;
@@ -125,7 +107,7 @@ const addCartItem = (event) => {
   let foodImage = $(foodEntityClicked).find(".foodImage").text();
   let foodPrice = $(foodEntityClicked).find(".price").text();
 
-  addRow(foodName,foodId, foodImage, foodPrice);
+  addRow(foodName, foodId, foodImage, foodPrice);
   updateCartTotal();
 }
 
