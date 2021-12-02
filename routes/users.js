@@ -9,7 +9,7 @@ const router = express.Router();
 const userFns = require('../db/queries/users_queries')
 
 router.get("/", (req, res) => {
-  userFns.getUsers()//r return either rows or error
+  userFns.getUsers()
     .then((users) => {
       res.json({ users });
     })
