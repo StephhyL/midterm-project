@@ -24,12 +24,13 @@ body {
       display:flex;
       flex-direction: column;
       background-color: whitesmoke;
-      border:crimson 4px dashed;
+      border:black 3px solid;
       width: 90%;
       margin-left: 5vw;
       margin-right: 5vw;
       margin-bottom: 1rem;
       padding-bottom: 1rem;
+      font-size: 1.10rem;
       .notification-text {
         // background-color: violet;
         // border: chartreuse 4px dashed;
@@ -40,9 +41,11 @@ body {
       }
       .ok-btn {
         width: 90%;
-        background-color: chartreuse;
+        background-color:  #FFD662 ;
         margin-left: 5%;
         margin-right: 5%;
+        font-weight: bold;
+        border-radius: 10px;
       }
     }
   }
@@ -53,9 +56,20 @@ body {
 
   main.container {
     width: 60%;
+
+    .pizza-img {
+      border: 3px black solid;
+      margin: 1rem;
+      border-radius: 20px;
+    }
+
+
   }
   .add-btn {
     width: 100%;
+    background-color: grey;
+    color:black;
+    border-radius: 7px;
   }
 }
 
