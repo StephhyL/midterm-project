@@ -50,7 +50,8 @@
         <div class="card mb-3">
           <div class="row foodEntity">
             <div class="col-4">
-              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="" class="img-fluid foodImage">
+              <img src="<%= food_item.img_url %>" alt="" class="img-fluid foodImage pizza-img">
+              <!-- <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="" class="img-fluid foodImage pizza-img"> -->
             </div>
             <div class="col-8">
               <div class="card-body">
@@ -73,7 +74,7 @@
 
         <div class="cart-title">
           <span>Item</span>
-          <span>Price Per Item</span>
+          <span>Price/Item</span>
           <span>Quantity</span>
         </div>
 
@@ -135,7 +136,7 @@
         return`<div class="one-notification">
                <div class="notification-text">
               <span>Hello!</span>
-              <p>Your order <span>${newNotificationObj.cartId}</span> is being processed. The estimated time for pick up is in <span>${newNotificationObj.time}</span> minutes. We will notify you again once the food is ready! See you soon!</p>
+              <p>Your order #<span>${newNotificationObj.cartId}</span> is being processed. The estimated time for pick up is in <span>${newNotificationObj.time}</span> minutes. We will notify you again once the food is ready! See you soon!</p>
             </div>
             <footer>
               <button class="ok-btn">OK</button>
