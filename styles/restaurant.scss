@@ -1,3 +1,7 @@
+h1 {
+  text-align: center;
+}
+
 .restaurant-container {
   width: 90vw;
   margin-left: 5vw;
@@ -11,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: pink;
+    background-color: white;
     width: 100%;
     h3 {
       font-weight: bold;
@@ -21,26 +25,29 @@
   #order-title {
     display: flex;
     align-items:center;
-    justify-content: center;
+    // justify-content: center;
     font-size: 1.25rem;
     font-weight: bold;
+    font-size: 1rem;
     border-bottom: darkblue 2px solid;
     background-color: peachpuff;
     #order-details-title {
       // border: gold 3px solid;
-      width: 60%;
+      width: 70%;
       text-align: center;
       // border: blue 3px solid;
     }
     #est-time-title {
       // border: springgreen 3px solid;
       text-align: center;
-      font-size: 1rem;
+
+      width: 15%;
       // border:red 3px solid;
-      margin-left: 1.25rem;
-      margin-right: 1rem;
+      // margin-left: 1.25rem;
+      // margin-right: 1rem;
     }
     #completed {
+      width:15%;
       text-align: center;
       margin-left: 0.5rem;
       // border: blue 3px solid;
@@ -55,24 +62,25 @@
       margin-bottom: 1.5rem;
       display: flex;
       justify-content: space-between;
-      border: rgb(216, 126, 156) dashed 3px;
+      border: black 3px solid;
 
       .order-details {
         display: flex;
         flex-direction: column;
-        border: 3px solid yellow;
-        width:80%;
+        width:70%;
       }
     .user-details {
-      border: tomato 3px solid;
+      // border: tomato 3px solid;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-evenly;
       align-items: center;
+      padding-top: 0.5rem;
       padding-right: 1.5rem;
       padding-left: 1.5rem;
       div {
         display: flex;
+        margin-right: 1rem;
       }
       span {
         font-weight: bold;
@@ -81,14 +89,19 @@
     }
 
     .food-details {
-      border: springgreen 3px solid;
+      border-top: 1px black solid;
+      border-bottom: 1px black solid;
+      padding: 1rem;
       span {
         font-weight: bold;
+      }
+      .total-price {
+        font-weight: normal;
       }
     }
 
     .note-details {
-      border: orange 3px solid;
+      padding: 1rem;
       span {
         font-weight: bold;
       }
@@ -100,12 +113,14 @@
 
 
       .time-container {
-        border: red solid 3px;
+        // border: red solid 3px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 20%;
+        width: 15%;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
         form {
           display: flex;
           justify-content: center;
@@ -119,13 +134,15 @@
         }
         .submit-btn {
           background-color: lightgreen;
+          font-size: 1rem;
+          border-radius: 10px;
         }
       }
 
       .div-check {
         display:flex;
-        border: purple solid 4px;
-        width: 20%;
+        // border: purple solid 4px;
+        width: 15%;
         justify-content: center;
         align-items: center;
         input {
