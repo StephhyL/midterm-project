@@ -41,7 +41,6 @@ router.get("/:id", (req, res) => {
 
 router.post('/completed/:id', (req, res) => {
   const response = req.body;
-  console.log('we are now in almost the last post in this whole thing', response)
   userFns.completedOrder(response)
     .then(data => {
       socket_client()
@@ -71,9 +70,6 @@ router.post("/:id", (req, res) => {
     cartId: req.body.cartId,
     time: req.body.time
   };
-
-  console.log("timeOBj------", timeObj);
-  console.log('login.js line 41 received from newCart ejs', req.body)
 
   userFns.updateTime(response)
     .then(data => {

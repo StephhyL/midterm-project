@@ -12,31 +12,13 @@ const socket_client = require('./socket-client')
 
 //server for socket.io
 const server = require('http').createServer(app);
-// const {Server} = require('socket.io')
-// const io = new Server(server)
-
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 
-
-// const io = (server, {
-//   cors: {
-//     origin: '*'
-//   }
-// });
-
-// require('socket.io')
-
 //Connecting to server.io; assigns a random id to anyone connected to our server
 io.on('connection', (socket) => {
-  console.log("new socket connection made (server.js)")
-  console.log("socket id (server.js file) ---->", socket.id)
   socket.on("inputValue", (data) => {
-    console.log("The data below is received from server.js line 35 (customer to restaurant)->")
-    console.log(data);
-
     io.emit("inputValue", data)
-    // socket.to(room).emit("receive-message", message);
   })
 
   socket.on("time-message", (data) => {
@@ -92,7 +74,6 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const homeRoutes = require("./routes/home");
 const userLoginRoutes = require('./routes/login');
-const restaurantRoutes = require('./routes/restaurant')
 const messageRoutes = require('./routes/message')
 const newCartRoutes = require('./routes/newCart')
 
@@ -101,7 +82,6 @@ const newCartRoutes = require('./routes/newCart')
 app.use("/api/users", usersRoutes);
 app.use('/', homeRoutes)
 app.use('/login', userLoginRoutes)
-app.use("/restaurant", restaurantRoutes);
 app.use("/message", messageRoutes);
 app.use("/newcart", newCartRoutes);
 
@@ -113,7 +93,3 @@ server.listen(3000, () => {
 })
 
 socket_client();
-
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
-});

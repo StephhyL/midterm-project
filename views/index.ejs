@@ -20,8 +20,7 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
   <!-- TEST JS -->
   <script type="text/javascript" src="/scripts/test.js"></script>
-  <!-- SOCKET.IO
-  <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script> -->
+
 
 </head>
 
@@ -30,15 +29,7 @@
   <%- include('./partials/_nav'); %>
 
   <div class="notification">
-    <div class="one-notification">
-      <div class="notification-text">
-        <span>Hello <span>Kira,</span></span>
-        <p>Your order <span>(#order_id)</span> is being processed. The estimated time for pick up is in <span>30</span> minutes. We will notify you again once the food is ready! See you soon!</p>
-      </div>
-      <footer>
-        <button class="ok-btn">OK</button>
-      </footer>
-    </div>
+    <!-- Notifications get appended here -->
   </div>
 
   <div class="menu-cart">
@@ -115,74 +106,7 @@
   <!--SOCKET IO-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js" integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script>
-    const socket = io("ws://localhost:3000");
-    socket.on('connect', () => {
-      //below is displayed on browser console
-      console.log("index.ejs is connected ->")
-    })
-    socket.on("time-message", (data) => {
-      //visible on browser console only
-      console.log("REEEEEACCCCHED")
-      console.log("data passed in here on index.ejs line 125--", data)
-
-      const okBtn = (event) => {
-        let okBtnClicked = $(event.target);
-        let notificationClicked = okBtnClicked.closest(".one-notification").remove();
-      }
-
-      const newNotification = function(newNotificationObj) {
-        return`<div class="one-notification">
-               <div class="notification-text">
-              <span>Hello!</span>
-              <p>Your order <span>${newNotificationObj.cartId}</span> is being processed. The estimated time for pick up is in <span>${newNotificationObj.time}</span> minutes. We will notify you again once the food is ready! See you soon!</p>
-            </div>
-            <footer>
-              <button class="ok-btn">OK</button>
-            </footer>
-          </div>
-         `
-      }
-
-      // console.log("newNotification(data)")
-      // console.log(newNotification(data));
-      $(".notification").prepend(newNotification(data));
-
-      // 'activates submit button when clicked'
-      $(".one-notification").find(".ok-btn").on("click", okBtn)
-    })
-
-    socket.on("orderCompleted", (data) => {
-
-      console.log("orderCompleted data passed in here on index.ejs line 156--", data)
-
-      const completedBtn = (event) => {
-        let completedBtnClicked = $(event.target);
-        let completedNotificationClicked = completedBtnClicked.closest(".one-notification").remove();
-      }
-
-      const completedNotification = function(obj) {
-        return`<div class="one-notification">
-               <div class="notification-text">
-              <span>Hello!</span>
-              <p>Your order <span>${obj.cartId}</span> Has been completed and its ready for pickup. See you soon!</p>
-            </div>
-            <footer>
-              <button class="ok-btn">OK</button>
-            </footer>
-          </div>
-         `
-      }
-
-      $(".notification").prepend(completedNotification(data));
-      $(".one-notification").find(".ok-btn").on("click", completedBtn)
-    });
-
-  </script>
-
-
-
-
+  <script src='/scripts/index.js'></script>
 
 
 </body>
