@@ -18,7 +18,7 @@ const socket_client = require('../socket-client');
 const retrieveFoods = (obj) => {
   let foods = '';
   for (let food_item in obj) {
-    foods += `${obj[food_item].qty} x ${food_item}\n`;
+    foods += `-- ${obj[food_item].qty} x ${food_item} `;
   }
   return foods;
 };
