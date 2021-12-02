@@ -20,8 +20,7 @@
   <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
-  <!-- RESTAURANT SUBMIT BUTTON JS -->
-  <!-- <script type="text/javascript" src="/scripts/restaurant_submit.js"></script> -->
+
 
 </head>
 <body>
@@ -38,204 +37,15 @@
 
     <div class="order-list">
       <!-- DIV FOR INCOMING ORDER-->
-      <!--SKELETON DIV FOR INCOMING ORDER-->
-      <!-- <div class="one-order">
-        <div class="order-details">
-          <p id="incoming-order-here">Hard-Coded Layout as Sample (for CSS)</p>
-        </div>
-
-        <div class="time-container">
-          <form>
-            <textarea type="text" class="estimated-time" name="estimated-time"></textarea>
-          </form>
-          <button type="submit" class="submit-btn">Submit</button>
-        </div>
-
-        <div class="div-check">
-          <input type="checkbox"/>
-        </div> -->
-
-      </div>
-
-      <!-- <div class="one-order">
-        <div class="order-details">
-          <div class="user-details">
-            <div>
-                <span>Customer ID: </span>
-                <p>3</p>
-                <span>Order ID: </span>
-                <span class="order-id">${orderObj.cartId}</span>
-            </div>
-            <div>
-                <span>Time of Order Placement:</span>
-                <p>TIMESTAMP</p>
-            </div>
-          </div>
-          <div class="food-details">
-            <span>Food to Prepare:</span>
-            <span>List of foods in a string</span>
-          </div>
-          <div class="note-details">
-            <span>Customer Notes:</span>
-            <p>Please do not include peanuts in my hamburgers. Thank you!</p>
-          </div>
-        </div>
-        <div class="time-container">
-          <form>
-            <textarea type="text" class="estimated-time" name="estimated-time"></textarea>
-          </form>
-          <button type="submit" class="submit-btn">Submit</button>
-        </div>
-        <div class="div-check">
-            <input type="checkbox"/>
-        </div>
-      </div> -->
-
     </div>
 
-    <!-- <footer>
-      <div>
-        <h3>Previous Orders</h3>
-      </div>
-      <div>
-        <p>
-          <%- JSON.stringify(carts) %>
-        </p>
-      </div>
-    </footer> -->
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js" integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script>
 
-      const socket = io("ws://localhost:3000");
-      socket.on('connect', () => {
-        console.log("restaurant.ejs is connected")
-      })
-      socket.on("inputValue", (data) => {
-
-
-        //data is now that OBJECT from newCart.js ********
-
-        // console.log("Reached restaurant ejs line 117-- >", data)
-
-
-        //SUBMIT BUTTON THAT TRIGGERS AJAX POST REQUEST
-        const submitTime = (event) => {
-          let submitBtnClicked = $(event.target);
-          submitBtnClicked.css("background-color", "red");
-          // submitBtnClicked.closest(".time-containerer").find(".estimated-time").css("background", "gray");
-          let estTime = submitBtnClicked.closest(".time-container").find(".estimated-time").val();
-
-          $.post("/login/2", {time:estTime, cartId: data.cartId});
-        };
-
-      const newOrder = function(orderObj) {
-        return `
-        <div class="one-order">
-          <div class="order-details">
-            <div class="user-details">
-              <div class="userCartId">
-                  <span>Customer ID: </span>
-                  <p> ${orderObj.customerId}</p>
-              </div>
-              <div>
-                  <span> Cart ID: </span>
-                  <p> ${orderObj.cartId}</p>
-              </div>
-              <div>
-                  <span>Order Placed:</span>
-                  <p>${orderObj.time}</p>
-              </div>
-            </div>
-            <div class="food-details">
-              <span>Food to Prepare:</span><br>
-              <span>${orderObj.listOfFoods}</span><br><br>
-              <span>Total: </span>
-              <span class="total-price"> $${orderObj.total} </span>
-            </div>
-            <div class="note-details">
-              <span>Customer Notes:</span>
-              <p>${orderObj.notes}</p>
-            </div>
-          </div>
-          <div class="time-container">
-            <form>
-              <textarea type="text" class="estimated-time" name="estimated-time"></textarea>
-            </form>
-            <button type="submit" class="submit-btn"> Submit</button>
-          </div>
-          <div class="div-check">
-              <input class="checkbox-btn"type="checkbox"/>
-          </div>
-        </div>`
-      };
-
-        // console.log("newOrder(data)-------");
-        // console.log(newOrder(data))
-
-
-        $(".order-list").prepend(newOrder(data));
-
-        // 'activates submit button when clicked'
-       $(".one-order").find(".submit-btn").on("click", submitTime)
-
-
-
-
-       //SUBMIT BUTTON THAT TRIGGERS AJAX POST REQUEST
-       const completedOrder = (event) => {
-          let checkboxClicked = $(event.target).css("background-color", "red");
-          /* checkboxBtnClicked.css("background-color", "red"); */
-           console.log('Comes from restaruant.ejs when clicked checkbox ',data);
-          $.post(`/login/completed/${data.customerId}`, {userId:data.customerId, cartId: data.cartId});
-        };
-
-      //  Chebox completed sends message.
-       $(".one-order").find(".checkbox-btn").on("click", completedOrder)
-
-
-
-        // const $pData = $("<p>").addClass(".incoming-order-here").text(data);
-        // const $divOrderDetails = $("<div>").addClass("order-details");
-        // //appending p with incoming data to a div tag for the "order" side
-        // $divOrderDetails.append($pData);
-
-
-        // const $form = $("<form>");
-        // const $textarea = $("<textarea>").addClass("estimated-time").attr("type", "text").attr("name", "estimated-time");
-        // //appending textbox to form
-        // $form.append($textarea);
-
-        // const $button = $("<button>").addClass("submit-btn").attr("type", "submit").text("Submit");
-        // const $timeContainer = $("<div>").addClass("time-container");
-        // //appending to make the textbox for restaurant to input est. time
-        // $timeContainer.append($form, $button);
-
-        // $inputCk = $("<input>").attr("type", "checkbox");
-        // $divCk = $("<div>").addClass("div-check");
-        // $divCk.append($inputCk)
-
-
-        // const $divOneOrder = $("<div>").addClass("one-order")
-        // $divOneOrder.append($divOrderDetails, $timeContainer, $divCk)
-
-        // $(".order-list").prepend($divOneOrder);
-
-
-        // 'activates submit button when clicked'
-        // $divOneOrder.find(".submit-btn").on("click", submitTime)
-
-
-        // $("#incoming-order-here").text(data);
-
-        // document.querySelector('#incoming-order-here').innerHTML = data;
-      })
-    </script>
-
-
+    <script src="/scripts/restaurant.js"></script>
   </main>
-
 
 </body>
 </html>

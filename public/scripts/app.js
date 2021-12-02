@@ -1,18 +1,10 @@
-// Client facing scripts here
-
-
-
-
 //Can only get access to 'addButtons' once the page has loaded
 $(() => {
-
-
   const addButtons = $(".add-btn")
   for (let i = 0; i < addButtons.length; i++) {
     let button = addButtons[i];
     button.addEventListener("click", addCartItem)
   }
-
 })
 
 /************* UPDATE CART TOTAL FUNCTIONS ********/
@@ -20,7 +12,7 @@ const updateCartTotal = () => {
   let cartRows = $(".cart-row")
   let subtotal = 0;
   // for each row in the cart, retrieve price and quantity (jQuery objects)
-  cartRows.each(function(index, element) {
+  cartRows.each(function() {
     let priceElement = $(this).find('.item-price').text();
     let price = Number(priceElement.replace('$', ''));
     let quantityElement = $(this).find('.quantity').text();
