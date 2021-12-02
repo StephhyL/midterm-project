@@ -26,15 +26,9 @@
 </head>
 <body>
   <%- include('./partials/_nav') %>
-  <h1>Restaurant's Main Page</h1>
+  <h1>Incoming Orders</h1>
 
   <main class="restaurant-container">
-
-    <!-- <p id="incoming-order-here"></p> -->
-
-    <header id="banner">
-      <h3>Incoming Orders</h3>
-    </header>
 
     <div id="order-title">
       <div id="order-details-title">ORDER DETAILS</div>
@@ -45,7 +39,7 @@
     <div class="order-list">
       <!-- DIV FOR INCOMING ORDER-->
       <!--SKELETON DIV FOR INCOMING ORDER-->
-      <div class="one-order">
+      <!-- <div class="one-order">
         <div class="order-details">
           <p id="incoming-order-here">Hard-Coded Layout as Sample (for CSS)</p>
         </div>
@@ -59,11 +53,11 @@
 
         <div class="div-check">
           <input type="checkbox"/>
-        </div>
+        </div> -->
 
       </div>
 
-      <div class="one-order">
+      <!-- <div class="one-order">
         <div class="order-details">
           <div class="user-details">
             <div>
@@ -95,11 +89,11 @@
         <div class="div-check">
             <input type="checkbox"/>
         </div>
-      </div>
+      </div> -->
 
     </div>
 
-    <footer>
+    <!-- <footer>
       <div>
         <h3>Previous Orders</h3>
       </div>
@@ -108,7 +102,7 @@
           <%- JSON.stringify(carts) %>
         </p>
       </div>
-    </footer>
+    </footer> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js" integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -140,20 +134,24 @@
         <div class="one-order">
           <div class="order-details">
             <div class="user-details">
-              <div>
+              <div class="userCartId">
                   <span>Customer ID: </span>
                   <p> ${orderObj.customerId}</p>
               </div>
               <div>
-                  <span>Time of Order Placement:</span>
+                  <span> Cart ID: </span>
+                  <p> ${orderObj.cartId}</p>
+              </div>
+              <div>
+                  <span>Order Placed:</span>
                   <p>${orderObj.time}</p>
               </div>
             </div>
             <div class="food-details">
-              <span>Food to Prepare:</span>
-              <span>${orderObj.listOfFoods}</span>
-              <span> Total</span>
-              <span> ${orderObj.total} </span>
+              <span>Food to Prepare:</span><br>
+              <span>${orderObj.listOfFoods}</span><br><br>
+              <span>Total: </span>
+              <span class="total-price"> $${orderObj.total} </span>
             </div>
             <div class="note-details">
               <span>Customer Notes:</span>
