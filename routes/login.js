@@ -82,8 +82,8 @@ router.post("/:id", (req, res) => {
           return client.messages
             .create({
               body: customerUpdate,
-              to: process.env.TWILIO_CUSTOMER_PHONE_NUMBER, // Text this number
-              from: process.env.TWILIO_PHONE_NUMBER, // From a valid Twilio number
+              to: process.env.TWILIO_CUSTOMER_PHONE_NUMBER,
+              from: process.env.TWILIO_PHONE_NUMBER,
             })
             .then((message) => console.log(message.sid))
             .catch(err => console.log(err));

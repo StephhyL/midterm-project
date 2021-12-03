@@ -10,7 +10,11 @@ socket.on("inputValue", (data) => {
   const submitTime = (event) => {
     let submitBtnClicked = $(event.target);
     submitBtnClicked.css("background-color", "red");
+<<<<<<< HEAD
     submitBtnClicked.closest(".time-container").find(".estimated-time").css("background-color","lightgrey");
+=======
+    submitBtnClicked.closest(".time-container").find(".estimated-time").css("background-color", "lightgrey");
+>>>>>>> 01d83e2fbf052e01062a8b9a948de26041f2524e
     let estTime = submitBtnClicked.closest(".time-container").find(".estimated-time").val();
 
     $.post("/login/2", { time: estTime, cartId: data.cartId });
@@ -19,44 +23,53 @@ socket.on("inputValue", (data) => {
   const newOrder = function(orderObj) {
     return `
   <div class="one-order">
-    <div class="order-details">
-      <div class="user-details">
-        <div>
-            <span>Customer ID: </span>
-            <p> ${orderObj.customerId}</p>
-        </div>
-        <div>
-            <span>Order ID: </span>
-            <p> ${orderObj.cartId}</p>
-        </div>
-        <div>
-            <span>Time of Order Placement:</span>
-            <p>${orderObj.time}</p>
-        </div>
+    <div class="user-details">
+      <div>
+          <span>Customer ID: </span>
+          <p> ${orderObj.customerId}</p>
       </div>
-      <div class="food-details">
-        <span>Food to Prepare:</span>
-        <br>
-        <span>${orderObj.listOfFoods}</span>
-        <br>
-        <br>
-        <span> Total: </span>
-        <span> ${orderObj.total} </span>
+      <div>
+        <span>Order ID: </span>
+        <p> ${orderObj.cartId}</p>
       </div>
-      <div class="note-details">
-        <span>Customer Notes:</span>
-        <p>${orderObj.notes}</p>
+      <div>
+        <span>Time of Order Placement:</span>
+        <p>${orderObj.time}</p>
       </div>
     </div>
-    <div class="time-container">
-      <form>
-        <textarea type="text" class="estimated-time" name="estimated-time"></textarea>
-      </form>
-      <button type="submit" class="submit-btn"> Submit</button>
+
+    <div class='parent-container'>
+      <div class="order-details">
+        <div class="food-details">
+          <span>Food to Prepare:</span>
+          <br>
+          <span>${orderObj.listOfFoods}</span>
+          <br>
+          <br>
+          <span> Total: </span>
+          <span> ${orderObj.total} </span>
+        </div>
+        <div class="note-details">
+          <span>Customer Notes:</span>
+          <p>${orderObj.notes}</p>
+        </div>
+      </div>
+
+
+
+        <div class='sibling-container'>
+            <div class="time-container">
+              <form>
+                <textarea type="text" class="estimated-time" name="estimated-time"></textarea>
+              </form>
+              <button type="submit" class="submit-btn"> Submit</button>
+            </div>
+            <div class="div-check">
+                <input class="checkbox-btn"type="checkbox"/>
+            </div>
+        </div>
     </div>
-    <div class="div-check">
-        <input class="checkbox-btn"type="checkbox"/>
-    </div>
+
   </div>`
   };
 
@@ -69,13 +82,20 @@ socket.on("inputValue", (data) => {
 
 
 
+
   //SUBMIT BUTTON THAT TRIGGERS AJAX POST REQUEST
   const completedOrder = (event) => {
     let checkboxClicked = $(event.target).css("background-color", "red");
     console.log('Comes from restaruant.ejs when clicked checkbox ', data);
+<<<<<<< HEAD
     setTimeout(()=> {
       checkboxClicked.closest(".one-order").remove();
     },2000)
+=======
+    setTimeout(() => {
+      checkboxClicked.closest(".one-order").remove();
+    }, 2000)
+>>>>>>> 01d83e2fbf052e01062a8b9a948de26041f2524e
     $.post(`/login/completed/${data.customerId}`, { userId: data.customerId, cartId: data.cartId });
   };
 

@@ -2,26 +2,42 @@ body {
   display: flex;
   flex-direction: column;
 
+  .navbar-brand {
+    font-size: 2rem;
+  }
+  .navbar {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    .loggedin {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
   min-height: 100vh;
 
+<<<<<<< HEAD
   background: rgb	(0,0,255);
+=======
+  background-color: #8d949b;
+>>>>>>> 01d83e2fbf052e01062a8b9a948de26041f2524e
 
   .notification {
     display: flex;
     flex-direction: column;
-    margin-top:1.5rem;
+    margin-top: 1.5rem;
     margin-bottom: 1rem;
-    .one-notification{
-      display:flex;
+    .one-notification {
+      display: flex;
       flex-direction: column;
-      background-color: whitesmoke;
-      border:black 3px solid;
+      background-color: ivory;
+      border: black 3px solid;
       width: 90%;
       margin-left: 5vw;
       margin-right: 5vw;
       margin-bottom: 1rem;
       padding-bottom: 1rem;
-      font-size: 1.10rem;
+      font-size: 1.1rem;
       .notification-text {
         // background-color: violet;
         // border: chartreuse 4px dashed;
@@ -32,7 +48,7 @@ body {
       }
       .ok-btn {
         width: 90%;
-        background-color:  #FFD662 ;
+        background-color: #ffd662;
         margin-left: 5%;
         margin-right: 5%;
         font-weight: bold;
@@ -42,25 +58,28 @@ body {
   }
 
   .menu-cart {
-    display:flex;
+    display: flex;
   }
 
   main.container {
     width: 60%;
+
+    h1 {
+      padding-bottom: 12px;
+    }
+
+    .card mb-3 {
+      background-color: ivory;
+    }
 
     .pizza-img {
       border: 3px black solid;
       margin: 1rem;
       border-radius: 20px;
     }
-
-
   }
   .add-btn {
     width: 100%;
-    background-color: grey;
-    color:black;
     border-radius: 7px;
   }
 }
-
