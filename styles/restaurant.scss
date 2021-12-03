@@ -176,14 +176,3 @@ body {
 
 $small: 300px;
 $medium: 900px;
-
-.smth {
-  //some CSS
-  @media screen and (max-width: $small) {
-    .restaurant-container {
-    }
-  }
-  @media screen and (min-width: $medium) {
-    //do Smth
-  }
-}
