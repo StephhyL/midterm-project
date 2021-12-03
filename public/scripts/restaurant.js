@@ -10,11 +10,7 @@ socket.on("inputValue", (data) => {
   const submitTime = (event) => {
     let submitBtnClicked = $(event.target);
     submitBtnClicked.css("background-color", "red");
-<<<<<<< HEAD
-    submitBtnClicked.closest(".time-container").find(".estimated-time").css("background-color","lightgrey");
-=======
     submitBtnClicked.closest(".time-container").find(".estimated-time").css("background-color", "lightgrey");
->>>>>>> 01d83e2fbf052e01062a8b9a948de26041f2524e
     let estTime = submitBtnClicked.closest(".time-container").find(".estimated-time").val();
 
     $.post("/login/2", { time: estTime, cartId: data.cartId });
@@ -87,15 +83,9 @@ socket.on("inputValue", (data) => {
   const completedOrder = (event) => {
     let checkboxClicked = $(event.target).css("background-color", "red");
     console.log('Comes from restaruant.ejs when clicked checkbox ', data);
-<<<<<<< HEAD
-    setTimeout(()=> {
-      checkboxClicked.closest(".one-order").remove();
-    },2000)
-=======
     setTimeout(() => {
       checkboxClicked.closest(".one-order").remove();
     }, 2000)
->>>>>>> 01d83e2fbf052e01062a8b9a948de26041f2524e
     $.post(`/login/completed/${data.customerId}`, { userId: data.customerId, cartId: data.cartId });
   };
 
