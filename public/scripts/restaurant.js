@@ -10,6 +10,7 @@ socket.on("inputValue", (data) => {
   const submitTime = (event) => {
     let submitBtnClicked = $(event.target);
     submitBtnClicked.css("background-color", "red");
+    submitBtnClicked.closest(".time-container").find(".estimated-time").css("background-color", "lightgrey");
     let estTime = submitBtnClicked.closest(".time-container").find(".estimated-time").val();
 
     $.post("/login/2", { time: estTime, cartId: data.cartId });
@@ -77,10 +78,14 @@ socket.on("inputValue", (data) => {
 
 
 
+
   //SUBMIT BUTTON THAT TRIGGERS AJAX POST REQUEST
   const completedOrder = (event) => {
     let checkboxClicked = $(event.target).css("background-color", "red");
     console.log('Comes from restaruant.ejs when clicked checkbox ', data);
+    setTimeout(() => {
+      checkboxClicked.closest(".one-order").remove();
+    }, 2000)
     $.post(`/login/completed/${data.customerId}`, { userId: data.customerId, cartId: data.cartId });
   };
 

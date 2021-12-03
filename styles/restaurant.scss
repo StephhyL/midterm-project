@@ -26,7 +26,7 @@ body {
   background-color: transparent;
   #order-title {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.25rem;
     font-weight: bold;
@@ -35,17 +35,27 @@ body {
     border-radius: 20px;
     padding: 5px 0;
     background-color: peachpuff;
+
     #order-details-title {
+      width: 60%;
+      display: flex;
+      justify-content: center;
       text-align: center;
       // border: blue 3px solid;
     }
-    #est-time-title {
-      text-align: center;
-    }
-    #completed {
-      text-align: center;
-      margin-left: 0.5rem;
-      // border: blue 3px solid;
+    .time-completed {
+      display: flex;
+      padding-right: 10px;
+      align-items: center;
+
+      #est-time-title {
+        text-align: center;
+      }
+      #completed {
+        text-align: center;
+        margin-left: 0.5rem;
+        // border: blue 3px solid;
+      }
     }
   }
   .order-list {
@@ -60,6 +70,7 @@ body {
       flex-direction: column;
       justify-content: space-between;
       border: black 3px solid;
+      background-color: ivory;
 
       .order-details {
         border-radius: 20px 0 0 0;
@@ -78,6 +89,7 @@ body {
         padding-top: 0.5rem;
         padding-right: 1.5rem;
         padding-left: 1.5rem;
+        border-bottom: 1px black solid;
         div {
           display: flex;
           flex-direction: column;
@@ -90,7 +102,6 @@ body {
       }
 
       .food-details {
-        border-top: 1px black solid;
         border-bottom: 1px black solid;
         padding: 1rem;
         span {

@@ -26,7 +26,7 @@ body {
     .one-notification {
       display: flex;
       flex-direction: column;
-      background-color: none;
+      background-color: ivory;
       border: black 3px solid;
       width: 90%;
       margin-left: 5vw;
@@ -59,6 +59,11 @@ body {
 
   main.container {
     width: 60%;
+
+    h1 {
+      padding-bottom: 12px;
+    }
+
     .card mb-3 {
       background-color: ivory;
     }
@@ -71,8 +76,6 @@ body {
   }
   .add-btn {
     width: 100%;
-    background-color: grey;
-    color: black;
     border-radius: 7px;
   }
 }
