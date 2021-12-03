@@ -47,7 +47,7 @@ router.post('/completed/:id', (req, res) => {
         .then((socket) => {
           socket.emit("orderCompleted", response)
 
-          const customerComplete = `Your order ${response.cartId} is ready for pickup. See you soon!`
+          const customerComplete = `Your order #${response.cartId} is ready for pickup. See you soon!`
           return client.messages
             .create({
               body: customerComplete,
@@ -75,7 +75,7 @@ router.post("/:id", (req, res) => {
     .then(data => {
       socket_client()
         .then((socket) => {
-          const customerUpdate = `Your order ${timeObj.cartId} is being processed. The estimated time for pick up is in ${timeObj.time} minutes. We will notify you again once the food is ready! See you soon!`
+          const customerUpdate = `Your order #${timeObj.cartId} is being processed. The estimated time for pick up is in ${timeObj.time} minutes. We will notify you again once the food is ready! See you soon!`
 
 
           socket.emit("time-message", timeObj)

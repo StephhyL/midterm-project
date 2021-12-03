@@ -16,7 +16,7 @@ socket.on("time-message", (data) => {
     return `<div class="one-notification">
            <div class="notification-text">
           <span>Hello!</span>
-          <p>Your order <span>${newNotificationObj.cartId}</span> is being processed. The estimated time for pick up is in <span>${newNotificationObj.time}</span> minutes. We will notify you again once the food is ready! See you soon!</p>
+          <p>Your order #<span>${newNotificationObj.cartId}</span> is being processed. The estimated time for pick up is in <span>${newNotificationObj.time}</span> minutes. We will notify you again once the food is ready! See you soon!</p>
         </div>
         <footer>
           <button class="ok-btn">OK</button>
@@ -42,7 +42,7 @@ socket.on("orderCompleted", (data) => {
     return `<div class="one-notification">
            <div class="notification-text">
           <span>Hello!</span>
-          <p>Your order <span>${obj.cartId}</span> Has been completed and its ready for pickup. See you soon!</p>
+          <p>Your order #<span>${obj.cartId}</span> has been completed and its ready for pickup. See you soon!</p>
         </div>
         <footer>
           <button class="ok-btn">OK</button>

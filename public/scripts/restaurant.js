@@ -25,14 +25,21 @@ socket.on("inputValue", (data) => {
             <p> ${orderObj.customerId}</p>
         </div>
         <div>
+            <span>Order ID: </span>
+            <p> ${orderObj.cartId}</p>
+        </div>
+        <div>
             <span>Time of Order Placement:</span>
             <p>${orderObj.time}</p>
         </div>
       </div>
       <div class="food-details">
         <span>Food to Prepare:</span>
+        <br>
         <span>${orderObj.listOfFoods}</span>
-        <span> Total</span>
+        <br>
+        <br>
+        <span> Total: </span>
         <span> ${orderObj.total} </span>
       </div>
       <div class="note-details">

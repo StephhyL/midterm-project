@@ -37,12 +37,12 @@ $(() => {
     })
 
     if (totalPrice === 0) {
-      return alert('Cart Empty, if you want to make an order you need to add items')
+      return alert('Cart Empty, if you want to make an order you need to add items.')
     }
 
     updateCartTotal();
     $("#note").val("");
-    alert('Order has been placed and you will be notified with an estimated time for your order. Thank you for your preference')
+    alert('Order has been placed and you will be notified with an estimated time for your order. Thank you for your preference!')
     $.post("/newcart", newCartObj)
     /* .done((res) => {
       console.log(`test.js line 49 reached ---------------`)
