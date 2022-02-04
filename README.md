@@ -6,8 +6,11 @@ Pizza Place was built using JavaScript, Express, EJS, AJAX, jQuery, PostgreSQL. 
 
 ## Final Product
 
-Add and resize images on your board!
-!["Full cycle of ordering food and completing the order"](https://github.com/bernadetteabalos/hodo-app/blob/master/docs/Insert%20and%20resize%20image.gif)
+A mini demo. The left is the restaurant, the right is the customer.
+!["Full cycle of ordering food and completing the order"](https://github.com/StephhyL/midterm-project/blob/master/docs/Pizza-place.gif)
+
+Sample Text Messages using Twilio:
+!['Customer SMS from Twilio"](https://github.com/StephhyL/midterm-project/blob/master/docs/twilio.png)
 
 ## Getting started
 
